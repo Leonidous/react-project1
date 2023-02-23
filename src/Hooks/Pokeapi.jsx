@@ -13,7 +13,7 @@ function useFetch(url){
             try {
                 const res = await fetch(url);
                 const json = await res.json();
-                setData(json.results);
+                setData(json);
                 setIsLoading(res);
             } catch(e) {
                 setIsError(e);
@@ -22,7 +22,6 @@ function useFetch(url){
         };
         fetchData();
     }, [dataFetchedRef]);
-    console.log(data);
     return [data, isLoading, isError];
 }
 
