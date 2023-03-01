@@ -9,17 +9,14 @@ import Typography from '@mui/material/Typography';
 import useFetch from '../Hooks/Pokeapi';
 import { Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { PokePager } from './Pagination';
 
 export function PokeList(page) {
-    const [pokemons, isLoading, isError] = useFetch('https://pokeapi.co/api/v2/pokemon?offset='+(((page.page)-1)*24)+'limit=24');
-
-    console.log(page.page);
+    
+    const [pokemons, isLoading, isError] = useFetch('https://pokeapi.co/api/v2/pokemon?limit=24&offset='+(((page.page)-1)*24));
 
     if(pokemons.results){
         return(
         <>
-            <PokePager />
             <Grid container spacing={4} className='poke-cards' sx={{paddingTop: 1, paddingBottom: 1}}>
                 {pokemons.results.map((pokemon, index) => (
                 <Grid item xs={8} sm={6} md={4} lg={2} key={index}>
