@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 export function PokeList(page) {
 
     const [pokemons, isLoading, isError] = useFetch('https://pokeapi.co/api/v2/pokemon?limit=24&offset='+(((page.page)-1)*24));
-    console.log(pokemons.results);
+    console.log(pokemons.results)
     if(pokemons.results){
         return(
         <>
@@ -26,7 +26,7 @@ export function PokeList(page) {
                             height: 325,
                             backgroundSize: 'contain',
                             }}
-                            image= {'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+((((page.page)-1)*24)+index+1)+'.png'}
+                            image= {'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+(Imageid(pokemon.url))+'.png'}
                             title={pokemon.name}
                         />
                         <CardContent>
@@ -56,7 +56,7 @@ function Imageid(ImageUrl) {
     const id = ImageUrl;
 
     const parts = ImageUrl.split("/");
-    const result = parts[parts.length - 1];
-    console.log(result);
-
+    const result = parts[parts.length - 2];
+    
+    return result;
 }
