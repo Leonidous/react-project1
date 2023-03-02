@@ -4,11 +4,8 @@ function useFetch(url){
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
-    const dataFetchedRef = useRef(false);
 
     useEffect(() => {
-        if(dataFetchedRef.current) return;
-        dataFetchedRef.current = true;
         const fetchData = async () => {
             try {
                 const res = await fetch(url);
@@ -21,7 +18,7 @@ function useFetch(url){
             }
         };
         fetchData();
-    }, [dataFetchedRef]);
+    }, [url]);
     return [data, isLoading, isError];
 }
 

@@ -20,20 +20,16 @@ export function PokePager() {
       setPage(value);
     };
 
-    const [pokemons, isLoading, isError] = useFetch('https://pokeapi.co/api/v2/pokemon?limit=24&offset='+(((page)-1)*24));
-
-    if(pokemons.results){
       return (
         <>
           <Stack>
             <Typography>{page}</Typography>
             <ThemeProvider theme={myTheme}>
-                <Pagination count={10} page={page} onChange={handleChange} size='large' sx={{mx:'auto', padding: 1}} color='primary'/>
+                <Pagination count={54} page={page} onChange={handleChange} size='large' sx={{mx:'auto', padding: 1}} color='primary'/>
             </ThemeProvider>
           </Stack>
   
           <PokeList page={page}/>
         </>
       );
-    }
 }

@@ -11,9 +11,9 @@ import { Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export function PokeList(page) {
-    
-    const [pokemons, isLoading, isError] = useFetch('https://pokeapi.co/api/v2/pokemon?limit=24&offset='+(((page.page)-1)*24));
 
+    const [pokemons, isLoading, isError] = useFetch('https://pokeapi.co/api/v2/pokemon?limit=24&offset='+(((page.page)-1)*24));
+    console.log(pokemons.results);
     if(pokemons.results){
         return(
         <>
@@ -26,7 +26,7 @@ export function PokeList(page) {
                             height: 325,
                             backgroundSize: 'contain',
                             }}
-                            image= {'https://img.pokemondb.net/artwork/large/' + pokemon.name + '.jpg'}
+                            image= {'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+((((page.page)-1)*24)+index+1)+'.png'}
                             title={pokemon.name}
                         />
                         <CardContent>
@@ -48,5 +48,15 @@ export function PokeList(page) {
         </>
         )
     }
+
+}
+
+function Imageid(ImageUrl) {
+
+    const id = ImageUrl;
+
+    const parts = ImageUrl.split("/");
+    const result = parts[parts.length - 1];
+    console.log(result);
 
 }
