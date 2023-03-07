@@ -10,6 +10,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { ThemeProvider } from "@mui/material/styles";
 import myTheme from "../Themes/theme";
+import { useState } from 'react';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -38,6 +39,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar() {
+
+  const [value, setValue] = useState("");
+
+  const handleTextInputChange = e => {
+    setValue(e.target.value);
+  }
 
   return (
         <Box sx={{ flexGrow: 1 }}>
@@ -71,7 +78,7 @@ export default function SearchAppBar() {
                     justifyContent: 'center',
                     zIndex: '1',
                   }}
-                  onClick={() => {console.log('hello');}}
+                  onClick={() => {console.log(value)}}
                   >
                     <SearchIcon />
                   </IconButton>
@@ -79,6 +86,7 @@ export default function SearchAppBar() {
                     placeholder="Search…"
                     inputProps={{ 'aria-label': 'search' }}
                     onChange={handleTextInputChange}
+                    value={value}
                   />
                 </Search>
               </Toolbar>
@@ -86,8 +94,4 @@ export default function SearchAppBar() {
         </ThemeProvider>
         </Box>
   );
-}
-
-function handleTextInputChange(){
-  console.log('text changed');
 }

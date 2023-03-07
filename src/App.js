@@ -1,7 +1,6 @@
 import './App.css'
-import {PokeList} from './Components/PokeList'
 import {PokeCard} from './Components/PokeCard'
-import { PokePager } from './Components/Pagination';
+import { PokePager } from './Components/PokePager';
 import Navbar from './Components/Navbar'
 import {Route, Routes} from 'react-router-dom'
 
