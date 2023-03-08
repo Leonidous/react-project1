@@ -5,7 +5,9 @@ function useFetch(url){
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
 
+    console.log('pokeapi');
     useEffect(() => {
+        console.log('pokeapi useEffect');
         const fetchData = async () => {
             try {
                 const res = await fetch(url);
@@ -16,7 +18,7 @@ function useFetch(url){
                 setIsError(e);
                 setIsLoading(false);
             }
-        };
+        }; 
         fetchData();
     }, [url]);
     return [data, isLoading, isError];

@@ -10,7 +10,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { ThemeProvider } from "@mui/material/styles";
 import myTheme from "../Themes/theme";
+import { PokeSearcher } from './PokeSearch';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -45,7 +47,7 @@ export default function SearchAppBar() {
   const handleTextInputChange = e => {
     setValue(e.target.value);
   }
-
+  console.log('navbar');
   return (
         <Box sx={{ flexGrow: 1 }}>
         <ThemeProvider theme={myTheme}>
@@ -69,19 +71,20 @@ export default function SearchAppBar() {
                     Pokédex
                 </Typography>
                 <Search>
-                  <IconButton sx={{
-                    height: '100%',
-                    color: 'inherit',
-                    position: 'absolute',
-                    pointerEvents: 'auto',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    zIndex: '1',
-                  }}
-                  onClick={() => {console.log(value)}}
-                  >
-                    <SearchIcon />
-                  </IconButton>
+                  <Link to={'/Search/' + value} style={{color:'#FFFFFF'}}>
+                    <IconButton sx={{
+                      height: '100%',
+                      color: 'inherit',
+                      position: 'absolute',
+                      pointerEvents: 'auto',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      zIndex: '1',
+                    }}
+                    >
+                      <SearchIcon />
+                    </IconButton>
+                  </Link>
                   <StyledInputBase
                     placeholder="Search…"
                     inputProps={{ 'aria-label': 'search' }}

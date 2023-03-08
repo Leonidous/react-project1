@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import { PokeContent } from './PokeContentGen';
 
 export function PokePager() {
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -30,11 +31,14 @@ export function PokePager() {
       console.log(value);
     };
 
+    console.log('pokepager');
+
     const [pageCheck, isLoading, isError] = useFetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0');
 
     const pages = (Math.ceil((pageCheck.count)/(perPage)));
+    
 
-    if(pageCheck.count){
+    if(pageCheck.count){ console.log('pokepager PagecheckCount');
       return (
         <>
           <Stack>

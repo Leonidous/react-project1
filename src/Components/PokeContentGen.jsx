@@ -14,9 +14,10 @@ export function PokeContent(page, pokePerPage) {
     const CurrentPage = page.page;
     const PerPage = page.pokePerPage;
 
+    console.log('pokecontentgen');
     const [pokemons, isLoading, isError] = useFetch('https://pokeapi.co/api/v2/pokemon?limit='+(PerPage)+'&offset='+(((CurrentPage)-1)*PerPage));
 
-    if(pokemons.results){
+    if(pokemons.results){ console.log('pokecontentgen results');
       return (
         <>
           <Grid container spacing={4} className='poke-cards' sx={{paddingTop: 1, paddingBottom: 1}}>

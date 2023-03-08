@@ -4,7 +4,7 @@ import useFetch from '../Hooks/Pokeapi';
 
 export function PokeCard() {
 
-    const {pokemon} =  useParams()
+    const {pokemon} =  useParams();
 
     const [pokemoninfo, isLoading, isError] = useFetch('https://pokeapi.co/api/v2/pokemon/'+pokemon);
 
