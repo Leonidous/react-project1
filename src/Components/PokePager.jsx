@@ -8,14 +8,44 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import { PokeContent } from './PokeContentGen';
+import { createBrowserHistory } from '@remix-run/router';
+import { useEffect } from 'react';
+import qs from 'qs';
+
 
 export function PokePager() {
 
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
+    const [page, setPage] = React.useState(1);
+    const [perPage, setperPage] = React.useState(24);
+    const handleChange = (event, value) => {
+      return setPage(value);
     };
+
+    //Preserve page state using browser history VVVVVVV
+    const history = createBrowserHistory();
+
+    useEffect(() => {
+      const filterParams = history.location.search.substr(1);
+      const filtersFromParams = qs.parse(filterParams);
+      if (filtersFromParams.page) {
+        setPage(Number(filtersFromParams.page));
+      }
+    }, []);
+
+    useEffect(() => {
+      history.push(`?page=${page}`);
+    }, [page]);
+    //Preserve page state using browser history ^^^^^
+
+    //Preserve perPage state using local storage VVVVVV
+    useEffect(() => {
+      setperPage(JSON.parse(window.localStorage.getItem('perPage')));
+    }, []);
+  
+    useEffect(() => {
+      window.localStorage.setItem('perPage', perPage);
+    }, [perPage]);
+    //Preserve page state using browser history ^^^^^
 
     const handleClose = e => {
       setAnchorEl(null);
@@ -24,19 +54,21 @@ export function PokePager() {
       }
     };
 
-    const [page, setPage] = React.useState(1);
-    const [perPage, setperPage] = React.useState(24);
-    const handleChange = (event, value) => {
-      setPage(value);
-      console.log(value);
+    const [pageCheck, isLoading, isError] = useFetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0');
+
+    const pages = (Math.ceil((pageCheck.count)/(perPage)));
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+      return setAnchorEl(event.currentTarget);
     };
 
     console.log('pokepager');
 
-    const [pageCheck, isLoading, isError] = useFetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0');
-
-    const pages = (Math.ceil((pageCheck.count)/(perPage)));
-    
+    if(page>pages){
+      setPage(pages);
+    }
 
     if(pageCheck.count){ console.log('pokepager PagecheckCount');
       return (

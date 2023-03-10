@@ -8,11 +8,18 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import useFetch from '../Hooks/Pokeapi';
+import fallbackimg from '../Images/FallbackImage.png'
 
-export function PokeContent(page, pokePerPage) {
+export function PokeContent(page) {
 
     const CurrentPage = page.page;
     const PerPage = page.pokePerPage;
+
+    const handleImageError = (e) => {
+        console.log('hello');
+        e.target.onerror = null;
+        e.target.src = fallbackimg;
+    }
 
     console.log('pokecontentgen');
     const [pokemons, isLoading, isError] = useFetch('https://pokeapi.co/api/v2/pokemon?limit='+(PerPage)+'&offset='+(((CurrentPage)-1)*PerPage));
@@ -23,13 +30,14 @@ export function PokeContent(page, pokePerPage) {
           <Grid container spacing={4} className='poke-cards' sx={{paddingTop: 1, paddingBottom: 1}}>
             {pokemons.results.map((pokemon, index) => (
             <Grid item xs={8} sm={6} md={4} lg={2} key={index}>
-                <Card sx={{ maxWidth: 345 }}>
+                <Card sx={{ maxWidth: 345}}>
                     <CardMedia className='poke-image'
                         sx={{ 
                         height: 325,
                         backgroundSize: 'contain',
                         }}
                         image= {'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+(Imageid(pokemon.url))+'.png'}
+                        onError= {handleImageError}
                         title={pokemon.name}
                     />
                     <CardContent>

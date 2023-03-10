@@ -10,7 +10,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { ThemeProvider } from "@mui/material/styles";
 import myTheme from "../Themes/theme";
-import { PokeSearcher } from './PokeSearch';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
