@@ -9,19 +9,15 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import useFetch from '../Hooks/Pokeapi';
 import fallbackimg from '../Images/FallbackImage.png'
+import { useRef } from 'react';
 
 export function PokeContent(page) {
+
+    const onMediaFallback = event => event.target.src = fallbackimg;
 
     const CurrentPage = page.page;
     const PerPage = page.pokePerPage;
 
-    const handleImageError = (e) => {
-        console.log('hello');
-        e.target.onerror = null;
-        e.target.src = fallbackimg;
-    }
-
-    console.log('pokecontentgen');
     const [pokemons, isLoading, isError] = useFetch('https://pokeapi.co/api/v2/pokemon?limit='+(PerPage)+'&offset='+(((CurrentPage)-1)*PerPage));
 
     if(pokemons.results){ console.log('pokecontentgen results');
@@ -33,13 +29,14 @@ export function PokeContent(page) {
                 <Card sx={{ maxWidth: 345}}>
                     <CardMedia className='poke-image'
                         sx={{ 
-                        height: 325,
-                        backgroundSize: 'contain',
+                        backgroundSize: 'cover',
                         }}
-                        image= {'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+(Imageid(pokemon.url))+'.png'}
-                        onError= {handleImageError}
+                        component="img"
+                        image= {PokeImage(pokemon.url)}
+                        onError={onMediaFallback}
                         title={pokemon.name}
-                    />
+                    >
+                    </CardMedia>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
                         {pokemon.name}
@@ -61,12 +58,14 @@ export function PokeContent(page) {
     }
 }
 
-function Imageid(ImageUrl) {
+function PokeImage(ImageUrl) {
 
   const id = ImageUrl;
 
   const parts = ImageUrl.split("/");
   const result = parts[parts.length - 2];
-  
-  return result;
+
+  const Image = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+ result +'.png';
+
+  return Image;
 }
