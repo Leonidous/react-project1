@@ -46,7 +46,7 @@ export default function SearchAppBar() {
   const handleTextInputChange = e => {
     setValue(e.target.value);
   }
-  console.log('navbar');
+
   return (
         <Box sx={{ flexGrow: 1 }}>
         <ThemeProvider theme={myTheme}>

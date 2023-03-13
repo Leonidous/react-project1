@@ -9,7 +9,6 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import useFetch from '../Hooks/Pokeapi';
 import fallbackimg from '../Images/FallbackImage.png'
-import { useRef } from 'react';
 
 export function PokeContent(page) {
 
@@ -20,7 +19,7 @@ export function PokeContent(page) {
 
     const [pokemons, isLoading, isError] = useFetch('https://pokeapi.co/api/v2/pokemon?limit='+(PerPage)+'&offset='+(((CurrentPage)-1)*PerPage));
 
-    if(pokemons.results){ console.log('pokecontentgen results');
+    if(pokemons.results){
       return (
         <>
           <Grid container spacing={4} className='poke-cards' sx={{paddingTop: 1, paddingBottom: 1}}>

@@ -64,13 +64,11 @@ export function PokePager() {
       return setAnchorEl(event.currentTarget);
     };
 
-    console.log('pokepager');
-
     if(page>pages){
       setPage(pages);
     }
 
-    if(pageCheck.count){ console.log('pokepager PagecheckCount');
+    if(pageCheck.count){
       return (
         <>
           <Stack>

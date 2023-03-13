@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState } from 'react';
 import useFetch from '../Hooks/Pokeapi';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
