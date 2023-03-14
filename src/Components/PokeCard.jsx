@@ -3,31 +3,31 @@ import { useParams } from 'react-router-dom';
 import useFetch from '../Hooks/Pokeapi';
 import fallbackimg from '../Images/FallbackImage.png'
 import PokeChart from './PokeStatChart';
-import { useState } from 'react';
+import Carousel from 'react-material-ui-carousel'
+import { Paper, Button } from '@mui/material'
+import '../App.css'
 
 export function PokeCard() {
 
     const {pokemon} =  useParams();
     const [pokemoninfo, isLoading, isError] = useFetch('https://pokeapi.co/api/v2/pokemon/'+pokemon);
-
-    const [pokeStats, setPokeStats] = useState({
+    
+    let pokeStats = {
         labels: '',
         datasets: [],
-    });
+    }
 
-    /* WORK IN PROGRESS
     if(!(Object.keys(pokemoninfo).length == 0)){
-        setPokeStats({
+        pokeStats = {
             labels: pokemoninfo.stats.map((statlist) => statlist.stat.name),
             datasets: [
                 {
-                label: pokemoninfo.stats.map((statlist) => statlist.stat.name),
-                data: pokemoninfo.stats.map((statlist) => statlist.base_stat)
+                data: pokemoninfo.stats.map((statlist) => statlist.base_stat),
                 },
             ],
-        })
+        };
     }
-    */
+    
 
     const onMediaFallback = event => event.target.src = fallbackimg;
 
@@ -35,12 +35,14 @@ export function PokeCard() {
         return (
             <>
                 <h1>{pokemoninfo.name}</h1>
-                <div>
-                    <img src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+pokemoninfo.id+'.png'} onError={onMediaFallback}></img>
-                    <img src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/'+pokemoninfo.id+'.png'} onError={onMediaFallback}></img>
-                </div>
-                <div>
-                    {/*<PokeChart stats={pokeStats}/>*/}
+                <div id='pokecard1'>
+                    <Carousel sx={{overflow: 'visible', position: 'sticky'}}>
+                        <img src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+pokemoninfo.id+'.png'} onError={onMediaFallback}></img>
+                        <img src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/'+pokemoninfo.id+'.png'} onError={onMediaFallback}></img>
+                    </Carousel>
+                    <div>
+                        <PokeChart stats={pokeStats}/>
+                    </div>
                 </div>
                 <h3>Type(s)</h3>
                 <ul>
