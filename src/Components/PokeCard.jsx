@@ -34,33 +34,39 @@ export function PokeCard() {
     if(!(Object.keys(pokemoninfo).length == 0)){
         return (
             <>
-                <h1>{pokemoninfo.name}</h1>
-                <div id='pokecard1'>
-                    <Carousel sx={{overflow: 'visible', position: 'sticky'}}>
-                        <img src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+pokemoninfo.id+'.png'} onError={onMediaFallback}></img>
-                        <img src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/'+pokemoninfo.id+'.png'} onError={onMediaFallback}></img>
-                    </Carousel>
-                    <div>
+                <h1 className='PokeCardTitle'>{pokemoninfo.name}</h1>
+                <div id='pokecard-grid'>
+                    <div className='pokeGridItem'>
+                        <Carousel autoPlay={false}>
+                            <img src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+pokemoninfo.id+'.png'} onError={onMediaFallback} style={{marginLeft: "auto", marginRight: "auto", display: "flex", justifyContent: "center"}}></img>
+                            <img src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/'+pokemoninfo.id+'.png'} onError={onMediaFallback} style={{marginLeft: "auto", marginRight: "auto", display: "flex", justifyContent: "center"}}></img>
+                        </Carousel>
+                    </div>
+                    <div className='pokeGridItem'>
                         <PokeChart stats={pokeStats}/>
                     </div>
+                    <div className='pokeGridItem'>
+                        <h3>Type(s)</h3>
+                        <ul>
+                            {pokemoninfo.types.map((typelist, key) => (
+                                <li key={key}>{typelist.type.name}</li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className='pokeGridItem'>
+                        <h3>Abilities</h3>
+                        <ul>
+                            {pokemoninfo.abilities.map((abilitylist, key) => (
+                                <li key={key}>{abilitylist.ability.name}</li>
+                            ))}
+                        </ul>
+                        <h3>Other Info</h3>
+                        <ul>
+                            <li>Height: {pokemoninfo.height}</li>
+                            <li>Weight: {pokemoninfo.weight}</li>
+                        </ul>
+                    </div>
                 </div>
-                <h3>Type(s)</h3>
-                <ul>
-                    {pokemoninfo.types.map((typelist, key) => (
-                        <li key={key}>{typelist.type.name}</li>
-                    ))}
-                </ul>
-                <h3>Abilities</h3>
-                <ul>
-                    {pokemoninfo.abilities.map((abilitylist, key) => (
-                        <li key={key}>{abilitylist.ability.name}</li>
-                    ))}
-                </ul>
-                <h3>Other Info</h3>
-                <ul>
-                    <li>Height: {pokemoninfo.height}</li>
-                    <li>Weight: {pokemoninfo.weight}</li>
-                </ul>
             </>
         )
     }

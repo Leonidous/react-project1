@@ -1,7 +1,18 @@
-#pokecard1 {
-  border-width: 10px;
+#pokecard-grid {
+  border-width: 5px;
   border-style: solid;
-  border-color: red;
-  display: flex;
-  flex-wrap: wrap;
+  border-color: #e4000f;
+  background-color: rgba(70, 150, 197, 0.562);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#pokeGridItem {
+  position:relative;
+  height:auto;
+  margin:auto;
+}
+
+.PokeCardTitle{
+  text-align:center;
 }
