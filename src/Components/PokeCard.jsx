@@ -11,18 +11,29 @@ export function PokeCard() {
 
     const {pokemon} =  useParams();
     const [pokemoninfo, isLoading, isError] = useFetch('https://pokeapi.co/api/v2/pokemon/'+pokemon);
-    
+
     let pokeStats = {
         labels: '',
         datasets: [],
     }
 
+    const pokeColors = ['#e4000f','#f08030','#f8d030','#6890f0','#78c850','#f85888'];
+    const pokeBorderColors = ['#a60000','#9c531f','#a1871f','#445e9c','#4e8234','#a13959']
+
+    if(!(Object.keys(pokemoninfo).length==0)){
+        console.log(pokemoninfo.stats.map((statlist) => statlist.stat.name)+' ('+pokemoninfo.stats.map((statlist) => statlist.base_stat)+')');
+
+        
+    }
+
     if(!(Object.keys(pokemoninfo).length == 0)){
         pokeStats = {
-            labels: pokemoninfo.stats.map((statlist) => statlist.stat.name),
+            labels: (pokemoninfo.stats.map((statlist) => statlist.stat.name)),
             datasets: [
                 {
                 data: pokemoninfo.stats.map((statlist) => statlist.base_stat),
+                backgroundColor: pokeColors.map((color) => color),
+                borderColor: pokeBorderColors.map((color) => color),
                 },
             ],
         };
