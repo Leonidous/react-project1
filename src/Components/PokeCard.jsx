@@ -1,9 +1,8 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import useFetch from '../Hooks/Pokeapi';
-import fallbackimg from '../Images/FallbackImage.png'
 import PokeChart from './PokeStatChart';
-import Carousel from 'react-material-ui-carousel'
+import PokeImgCarousel from './PokeImgCarousel';
 import '../App.css'
 
 export function PokeCard() {
@@ -41,25 +40,22 @@ export function PokeCard() {
             ],
         };
     }
-    
-
-    const onMediaFallback = event => event.target.src = fallbackimg;
 
     if(!(Object.keys(pokemoninfo).length == 0)){
         return (
             <>
                 <h1 className='PokeCardTitle'>{pokemoninfo.name}</h1>
                 <div id='pokecard-grid'>
-                    <div className='pokeGridItem'>
-                        <Carousel autoPlay={false} showArrows={true}>
-                            <img src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+pokemoninfo.id+'.png'} onError={onMediaFallback} style={{marginLeft: "auto", marginRight: "auto", display: "flex", justifyContent: "center"}}></img>
-                            <img src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/'+pokemoninfo.id+'.png'} onError={onMediaFallback} style={{marginLeft: "auto", marginRight: "auto", display: "flex", justifyContent: "center"}}></img>
-                        </Carousel>
+                    <div className='pokeGridItem-1'>
+                        <PokeImgCarousel 
+                            normal={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+pokemoninfo.id+'.png'} 
+                            shiny={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/'+pokemoninfo.id+'.png'}
+                        />
                     </div>
-                    <div className='pokeGridItem'>
+                    <div className='pokeGridItem-2'>
                         <PokeChart stats={pokeStats}/>
                     </div>
-                    <div className='pokeGridItem'>
+                    <div className='pokeGridItem-3'>
                         <h3 style={{textAlign: 'center'}}>Type(s)</h3>
                         <div id='TypeList'>
                             {pokemoninfo.types.map((typelist) => (
@@ -67,7 +63,7 @@ export function PokeCard() {
                             ))}
                         </div>
                     </div>
-                    <div className='pokeGridItem'>
+                    <div className='pokeGridItem-4'>
                         <h3>Abilities</h3>
                         <ul>
                             {pokemoninfo.abilities.map((abilitylist, key) => (
@@ -151,7 +147,9 @@ function importAll(r) {
     let images = {};
      r.keys().forEach((item, index) => { images[item.replace('./', '')] = r(item); });
     return images
-   }
+}
+
+
     /*What to add:
     -Pokemon Sprites (maybe be able to cycle through all of them?)
     -Graph of pokemon stats

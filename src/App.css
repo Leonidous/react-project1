@@ -4,11 +4,19 @@
   border-color: #e4000f;
   background-color: rgba(70, 150, 197, 0.562);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 50%));
 }
 
-.pokeGridItem {
-  
+.pokeGridItem-1 {
+  display: flex;
+  justify-content: center;
+}
+
+.pokeGridItem-2 {
+  position: relative;
+  margin: auto;
+  height: 40vh;
+  width: 45vw;
 }
 
 .pokeTypeImg {
@@ -24,5 +32,10 @@
 
 .PokeCardTitle{
   text-align:center;
+}
+
+.Carousel-text {
+  color: black;
+  font-size: Large;
 }
 
