@@ -4,7 +4,9 @@
   border-color: #e4000f;
   background-color: rgba(70, 150, 197, 0.562);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 50%));
+  grid-template-columns: repeat(auto-fit, minmax(500px, 50%));
+  margin: auto;
+  justify-content: center;
 }
 
 .pokeGridItem-1 {
@@ -17,6 +19,15 @@
   margin: auto;
   height: 40vh;
   width: 45vw;
+}
+
+@media (max-width: 1009px) {
+  .pokeGridItem-2 {
+    position: relative;
+    margin: auto;
+    height: 40vh;
+    width: 70vw;
+  }
 }
 
 .pokeTypeImg {

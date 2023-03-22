@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import useFetch from '../Hooks/Pokeapi';
 import PokeChart from './PokeStatChart';
 import PokeImgCarousel from './PokeImgCarousel';
+import MovesTable from './MovesTable';
 import '../App.css'
 
 export function PokeCard() {
@@ -19,16 +20,14 @@ export function PokeCard() {
     const pokeBorderColors = ['#a60000','#9c531f','#a1871f','#445e9c','#4e8234','#a13959']
 
     let statLabels = [];
+    let pokeMoveNames = [];
+    let pokeMoveUrl = [];
 
     if(!(Object.keys(pokemoninfo).length==0)){
         for(let i in pokemoninfo.stats){
             statLabels[i]=(pokemoninfo.stats[i].stat.name+' ('+pokemoninfo.stats[i].base_stat+')');
         }
-        console.log(statLabels);
-    }
 
-
-    if(!(Object.keys(pokemoninfo).length == 0)){
         pokeStats = {
             labels: (statLabels.map((statLabel) => statLabel)),
             datasets: [
@@ -39,7 +38,15 @@ export function PokeCard() {
                 },
             ],
         };
+
+        for(let i in pokemoninfo.moves){
+            pokeMoveNames[i] = pokemoninfo.moves[i].move.name;
+            pokeMoveUrl[i] = pokemoninfo.moves[i].move.url;
+        }
     }
+
+    console.log(pokeMoveNames);
+    console.log(pokeMoveUrl);
 
     if(!(Object.keys(pokemoninfo).length == 0)){
         return (
@@ -76,6 +83,9 @@ export function PokeCard() {
                             <li>Weight: {pokemoninfo.weight}</li>
                         </ul>
                     </div>
+                    <div className='pokeGridItem-5'>
+                        <MovesTable />
+                    </div>
                 </div>
             </>
         )
@@ -84,7 +94,6 @@ export function PokeCard() {
 
 
 function PokeType(type){
-    console.log(type);
     const images = importAll(require.context('../Images/typeIcons', false, /\.(png|jpe?g|svg)$/));
 
     if(type==='grass'){
