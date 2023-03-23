@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { useState, useEffect} from 'react';
 import useFetch from '../Hooks/Pokeapi';
 import PokeChart from './PokeStatChart';
 import PokeImgCarousel from './PokeImgCarousel';
@@ -10,6 +11,7 @@ export function PokeCard() {
 
     const {pokemon} =  useParams();
     const [pokemoninfo, isLoading, isError] = useFetch('https://pokeapi.co/api/v2/pokemon/'+pokemon);
+    const [moveList, setMoveList] = useState([]);
 
     let pokeStats = {
         labels: '',
@@ -20,8 +22,6 @@ export function PokeCard() {
     const pokeBorderColors = ['#a60000','#9c531f','#a1871f','#445e9c','#4e8234','#a13959']
 
     let statLabels = [];
-    let pokeMoveNames = [];
-    let pokeMoveUrl = [];
 
     if(!(Object.keys(pokemoninfo).length==0)){
         for(let i in pokemoninfo.stats){
@@ -38,15 +38,26 @@ export function PokeCard() {
                 },
             ],
         };
-
-        for(let i in pokemoninfo.moves){
-            pokeMoveNames[i] = pokemoninfo.moves[i].move.name;
-            pokeMoveUrl[i] = pokemoninfo.moves[i].move.url;
-        }
     }
 
-    console.log(pokeMoveNames);
-    console.log(pokeMoveUrl);
+    //Fetch move info VVV
+    useEffect (() => {
+        const getMoves = async () => {
+            if(pokemoninfo?.moves && pokemoninfo.moves.length > 0) {
+                const moveEndpoints = pokemoninfo.moves.map(async (moveObj) => 
+                    fetch(moveObj.move.url)
+                );
+
+                const rawResponseList = await Promise.all(moveEndpoints);
+                const moveList = await Promise.all(
+                    rawResponseList.map((res) => res.json())
+                );
+                setMoveList(moveList);
+            }
+        };
+        getMoves();
+    }, [pokemoninfo]);
+    //Fetch Move info ^^^
 
     if(!(Object.keys(pokemoninfo).length == 0)){
         return (
@@ -84,7 +95,7 @@ export function PokeCard() {
                         </ul>
                     </div>
                     <div className='pokeGridItem-5'>
-                        <MovesTable />
+                        <MovesTable Movelist={moveList}/>
                     </div>
                 </div>
             </>
@@ -117,7 +128,7 @@ function PokeType(type){
     if(type==='fairy'){
         return(images['Fairy_icon.png']);
     }
-    if(type=='fighting'){
+    if(type==='fighting'){
         return(images['Fighting_icon.png']);
     }
     if(type==='fire'){
@@ -161,8 +172,15 @@ function importAll(r) {
 
     /*What to add:
     -Pokemon Sprites (maybe be able to cycle through all of them?)
-    -Graph of pokemon stats
-    -Moves (in collapsible/scrollable list, will also show flavor text and what version learned in)
-    -Types with little type icons
+    -Graph of pokemon stats (DONE)
+    -Moves (in collapsible/scrollable list, will also show flavor text and what version learned in) (DONE)
+    -Types with little type icons (DONE)
+    -Add type defenses
+    -add egg groups
+    -add pokemon flavor text
+    -add evolutions
+    -add hidden ability
+    -add ability flavor text
+    -add generational learnset
     */
 }
