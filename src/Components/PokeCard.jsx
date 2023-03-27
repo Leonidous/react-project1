@@ -1,17 +1,29 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useState, useEffect} from 'react';
 import useFetch from '../Hooks/Pokeapi';
+import useArrayFetch from '../Hooks/PokeArrayApi';
 import PokeChart from './PokeStatChart';
 import PokeImgCarousel from './PokeImgCarousel';
 import MovesTable from './MovesTable';
 import '../App.css'
 
 export function PokeCard() {
-
     const {pokemon} =  useParams();
     const [pokemoninfo, isLoading, isError] = useFetch('https://pokeapi.co/api/v2/pokemon/'+pokemon);
-    const [moveList, setMoveList] = useState([]);
+
+    let moveEndpoints = [];
+    let abilityEndpoints = [];
+    if(pokemoninfo?.moves && pokemoninfo.moves.length > 0){
+        pokemoninfo.moves.map((moveObj) => 
+        moveEndpoints.push(moveObj.move.url)
+        )
+        pokemoninfo.abilities.map((abObj) => 
+        abilityEndpoints.push(abObj.ability.url)
+        )
+    }
+
+    const[abilityInfo] = useArrayFetch(abilityEndpoints);
+    const [MovesInfo] = useArrayFetch(moveEndpoints);
 
     let pokeStats = {
         labels: '',
@@ -40,25 +52,6 @@ export function PokeCard() {
         };
     }
 
-    //Fetch move info VVV
-    useEffect (() => {
-        const getMoves = async () => {
-            if(pokemoninfo?.moves && pokemoninfo.moves.length > 0) {
-                const moveEndpoints = pokemoninfo.moves.map(async (moveObj) => 
-                    fetch(moveObj.move.url)
-                );
-
-                const rawResponseList = await Promise.all(moveEndpoints);
-                const moveList = await Promise.all(
-                    rawResponseList.map((res) => res.json())
-                );
-                setMoveList(moveList);
-            }
-        };
-        getMoves();
-    }, [pokemoninfo]);
-    //Fetch Move info ^^^
-
     if(!(Object.keys(pokemoninfo).length == 0)){
         return (
             <>
@@ -84,8 +77,8 @@ export function PokeCard() {
                     <div className='pokeGridItem-4'>
                         <h3>Abilities</h3>
                         <ul>
-                            {pokemoninfo.abilities.map((abilitylist, key) => (
-                                <li key={key}>{abilitylist.ability.name}</li>
+                            {abilityInfo.map((ability, key) => (
+                                <li key={key}>{ability.name+': '+getFlavorTextLanguage('en', ability.flavor_text_entries)}</li>
                             ))}
                         </ul>
                         <h3>Other Info</h3>
@@ -95,7 +88,10 @@ export function PokeCard() {
                         </ul>
                     </div>
                     <div className='pokeGridItem-5'>
-                        <MovesTable Movelist={moveList}/>
+                        <MovesTable Movelist={MovesInfo}/>
+                    </div>
+                    <div className='pokeGridItem-6'>
+                        <h1>type defenses</h1>
                     </div>
                 </div>
             </>
@@ -169,6 +165,19 @@ function importAll(r) {
     return images
 }
 
+function getFlavorTextLanguage(language, flavorTextArray){
+  
+    let flavorText = '';
+  
+    for(let i in flavorTextArray){
+      if(flavorTextArray[i].language.name == language){
+        flavorText = flavorTextArray[i].flavor_text;
+        break;
+      }
+    }
+  
+    return (flavorText);
+  }
 
     /*What to add:
     -Pokemon Sprites (maybe be able to cycle through all of them?)

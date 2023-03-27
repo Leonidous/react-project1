@@ -2,7 +2,6 @@ import Table from 'react-bootstrap/Table';
 import '../App.css'
 
 function MovesTable(Movelist) {
-  console.log(Movelist.Movelist[0])
   return (
     <div className='movesTableContainer'>
       <Table striped bordered hover>
