@@ -63,3 +63,21 @@
   overflow: scroll;
 }
 
+.typesTableContainer {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.typesTable {
+  table-layout: fixed;
+  width: 90%;
+  margin: auto;
+}
+
+.Type {
+  display: block;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+

@@ -5,6 +5,7 @@ import useArrayFetch from '../Hooks/PokeArrayApi';
 import PokeChart from './PokeStatChart';
 import PokeImgCarousel from './PokeImgCarousel';
 import MovesTable from './MovesTable';
+import TypeChart from './TypeDefences';
 import '../App.css'
 
 export function PokeCard() {
@@ -13,6 +14,8 @@ export function PokeCard() {
 
     let moveEndpoints = [];
     let abilityEndpoints = [];
+    let typeEndpoints = [];
+
     if(pokemoninfo?.moves && pokemoninfo.moves.length > 0){
         pokemoninfo.moves.map((moveObj) => 
         moveEndpoints.push(moveObj.move.url)
@@ -20,10 +23,14 @@ export function PokeCard() {
         pokemoninfo.abilities.map((abObj) => 
         abilityEndpoints.push(abObj.ability.url)
         )
+        pokemoninfo.types.map((typeObj) => 
+        typeEndpoints.push(typeObj.type.url)
+        )
     }
 
-    const[abilityInfo] = useArrayFetch(abilityEndpoints);
+    const [abilityInfo] = useArrayFetch(abilityEndpoints);
     const [MovesInfo] = useArrayFetch(moveEndpoints);
+    const [typeInfo] = useArrayFetch(typeEndpoints);
 
     let pokeStats = {
         labels: '',
@@ -35,7 +42,7 @@ export function PokeCard() {
 
     let statLabels = [];
 
-    if(!(Object.keys(pokemoninfo).length==0)){
+    if(!(Object.keys(pokemoninfo).length === 0)){
         for(let i in pokemoninfo.stats){
             statLabels[i]=(pokemoninfo.stats[i].stat.name+' ('+pokemoninfo.stats[i].base_stat+')');
         }
@@ -52,7 +59,7 @@ export function PokeCard() {
         };
     }
 
-    if(!(Object.keys(pokemoninfo).length == 0)){
+    if(!(Object.keys(pokemoninfo).length === 0)){
         return (
             <>
                 <h1 className='PokeCardTitle'>{pokemoninfo.name}</h1>
@@ -70,7 +77,7 @@ export function PokeCard() {
                         <h3 style={{textAlign: 'center'}}>Type(s)</h3>
                         <div id='TypeList'>
                             {pokemoninfo.types.map((typelist) => (
-                                <div className='pokeTypeImg'><img src={PokeType(typelist.type.name)}/><div className='pokeTypeName'>{typelist.type.name}</div></div>
+                                <div className='pokeTypeImg'><img src={PokeType(typelist.type.name)} alt='Type'/><div className='pokeTypeName'>{typelist.type.name}</div></div>
                             ))}
                         </div>
                     </div>
@@ -91,7 +98,7 @@ export function PokeCard() {
                         <MovesTable Movelist={MovesInfo}/>
                     </div>
                     <div className='pokeGridItem-6'>
-                        <h1>type defenses</h1>
+                        <TypeChart types={typeInfo}/>
                     </div>
                 </div>
             </>
@@ -170,7 +177,7 @@ function getFlavorTextLanguage(language, flavorTextArray){
     let flavorText = '';
   
     for(let i in flavorTextArray){
-      if(flavorTextArray[i].language.name == language){
+      if(flavorTextArray[i].language.name === language){
         flavorText = flavorTextArray[i].flavor_text;
         break;
       }
