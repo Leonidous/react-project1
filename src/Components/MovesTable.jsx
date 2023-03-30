@@ -4,7 +4,7 @@ import '../App.css'
 function MovesTable(Movelist) {
   return (
     <div className='movesTableContainer'>
-      <Table striped bordered hover>
+      <Table striped bordered hover className='movesTable'>
         <thead>
           <tr>
             <th>Move Name</th>

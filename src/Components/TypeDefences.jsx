@@ -21,15 +21,15 @@ function TypeChart(types) {
         </thead>
         <tbody>
           <tr>
-            <td><img src={PokeType('normal')} title={'normal'} className='Type'/></td>
-            <td><img src={PokeType('fire')} title={'fire'} className='Type'/></td>
-            <td><img src={PokeType('water')} title={'water'} className='Type'/></td>
-            <td><img src={PokeType('electric')} title={'electric'} className='Type'/></td>
-            <td><img src={PokeType('grass')} title={'grass'} className='Type'/></td>
-            <td><img src={PokeType('ice')} title={'ice'} className='Type'/></td>
-            <td><img src={PokeType('fighting')} title={'fighting'} className='Type'/></td>
-            <td><img src={PokeType('poison')} title={'poison'} className='Type'/></td>
-            <td><img src={PokeType('ground')} title={'ground'} className='Type'/></td>
+            <td><img src={PokeType('normal')} title={'normal'} className='Type'/><text className='typeText'>Normal</text></td>
+            <td><img src={PokeType('fire')} title={'fire'} className='Type'/><text className='typeText'>Fire</text></td>
+            <td><img src={PokeType('water')} title={'water'} className='Type'/><text className='typeText'>Water</text></td>
+            <td><img src={PokeType('electric')} title={'electric'} className='Type'/><text className='typeText'>Electric</text></td>
+            <td><img src={PokeType('grass')} title={'grass'} className='Type'/><text className='typeText'>Grass</text></td>
+            <td><img src={PokeType('ice')} title={'ice'} className='Type'/><text className='typeText'>Ice</text></td>
+            <td><img src={PokeType('fighting')} title={'fighting'} className='Type'/><text className='typeText'>Fighting</text></td>
+            <td><img src={PokeType('poison')} title={'poison'} className='Type'/><text className='typeText'>Poison</text></td>
+            <td><img src={PokeType('ground')} title={'ground'} className='Type'/><text className='typeText'>Ground</text></td>
           </tr>
           <tr>
             {damageRelations.slice(0,9).map((typeDmg) => (
@@ -37,15 +37,15 @@ function TypeChart(types) {
             ))}
           </tr>
           <tr>
-            <td><img src={PokeType('flying')} title={'flying'} className='Type'/></td>
-            <td><img src={PokeType('psychic')} title={'psychic'} className='Type'/></td>
-            <td><img src={PokeType('bug')} title={'bug'} className='Type'/></td>
-            <td><img src={PokeType('rock')} title={'rock'} className='Type'/></td>
-            <td><img src={PokeType('ghost')} title={'ghost'} className='Type'/></td>
-            <td><img src={PokeType('dragon')} title={'dragon'} className='Type'/></td>
-            <td><img src={PokeType('dark')} title={'dark'} className='Type'/></td>
-            <td><img src={PokeType('steel')} title={'steel'} className='Type'/></td>
-            <td><img src={PokeType('fairy')} title={'fairy'} className='Type'/></td>
+            <td><img src={PokeType('flying')} title={'flying'} className='Type'/><text className='typeText'>Flying</text></td>
+            <td><img src={PokeType('psychic')} title={'psychic'} className='Type'/><text className='typeText'>Psychic</text></td>
+            <td><img src={PokeType('bug')} title={'bug'} className='Type'/><text className='typeText'>Bug</text></td>
+            <td><img src={PokeType('rock')} title={'rock'} className='Type'/><text className='typeText'>Rock</text></td>
+            <td><img src={PokeType('ghost')} title={'ghost'} className='Type'/><text className='typeText'>Ghost</text></td>
+            <td><img src={PokeType('dragon')} title={'dragon'} className='Type'/><text className='typeText'>Dragon</text></td>
+            <td><img src={PokeType('dark')} title={'dark'} className='Type'/><text className='typeText'>Dark</text></td>
+            <td><img src={PokeType('steel')} title={'steel'} className='Type'/><text className='typeText'>Steel</text></td>
+            <td><img src={PokeType('fairy')} title={'fairy'} className='Type'/><text className='typeText'>Fairy</text></td>
           </tr>
           <tr>
             {damageRelations.slice(9,18).map((typeDmg) => (

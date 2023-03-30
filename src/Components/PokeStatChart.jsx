@@ -90,7 +90,7 @@ export const options = {
 
 function PokeChart ({stats}){
 
-    return <Bar data={stats} options={options}/>
+    return <div className='pokeChartContainer'><Bar data={stats} options={options}/></div>
     
 }
 
