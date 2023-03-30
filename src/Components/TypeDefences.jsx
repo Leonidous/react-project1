@@ -33,7 +33,7 @@ function TypeChart(types) {
           </tr>
           <tr>
             {damageRelations.slice(0,9).map((typeDmg) => (
-                <td>{typeDmg}</td>
+                <>{typeDamageDisplay(typeDmg)}</>
             ))}
           </tr>
           <tr>
@@ -49,7 +49,7 @@ function TypeChart(types) {
           </tr>
           <tr>
             {damageRelations.slice(9,18).map((typeDmg) => (
-                <td>{typeDmg}</td>
+                <>{typeDamageDisplay(typeDmg)}</>
             ))}
           </tr>
         </tbody>
@@ -83,6 +83,27 @@ function typeDamageCalc(damageRelations){
     return(typeEffectiveness);
 }
 
+function typeDamageDisplay(typeNum){
+
+    if(typeNum === 0){
+        return <td className='typeDmgMult' style={{backgroundColor: '#2D2C2C', color: 'white', textAlign: 'center'}}>0x</td>
+    }
+    if(typeNum === 0.25){
+        return <td className='typeDmgMult' style={{backgroundColor: '#800000', color: 'white', textAlign: 'center'}}>0.25x</td>
+    }
+    if(typeNum === 0.5){
+        return <td className='typeDmgMult' style={{backgroundColor: '#a50000', color: 'white', textAlign: 'center'}}>0.5x</td>
+    }
+    if(typeNum === 1){
+        return <td className='typeDmgMult' style={{textAlign: 'center'}}>1x</td>
+    }
+    if(typeNum === 2){
+        return <td className='typeDmgMult' style={{backgroundColor: '#4e9805', textAlign: 'center'}}>2x</td>
+    }
+    if(typeNum === 4){
+        return <td className='typeDmgMult' style={{backgroundColor: '#73d212', textAlign: 'center'}}>4x</td>
+    }
+}
 function whichTypeIndex(type){
     if(type==='grass'){
         return(4);
