@@ -60,6 +60,7 @@ export function PokeCard() {
     }
 
     if(!(Object.keys(pokemoninfo).length === 0)){
+        console.log(abilityInfo);
         return (
             <>
                 <h1 className='PokeCardTitle'>{pokemoninfo.name}</h1>
@@ -77,22 +78,24 @@ export function PokeCard() {
                         <h3 style={{textAlign: 'center'}}>Type(s)</h3>
                         <div id='TypeList'>
                             {pokemoninfo.types.map((typelist) => (
-                                <div className='pokeTypeImg'><img src={PokeType(typelist.type.name)} alt='Type'/><div className='pokeTypeName'>{typelist.type.name}</div></div>
+                                <div className='pokeTypeImg' key={typelist.type.name}><img src={PokeType(typelist.type.name)} alt='Type'/><div className='pokeTypeName'>{typelist.type.name}</div></div>
                             ))}
                         </div>
                     </div>
                     <div className='pokeGridItem-4'>
-                        <h3>Abilities</h3>
-                        <ul>
-                            {abilityInfo.map((ability, key) => (
-                                <li key={key}>{ability.name+': '+getFlavorTextLanguage('en', ability.flavor_text_entries)}</li>
-                            ))}
-                        </ul>
-                        <h3>Other Info</h3>
-                        <ul>
-                            <li>Height: {pokemoninfo.height}</li>
-                            <li>Weight: {pokemoninfo.weight}</li>
-                        </ul>
+                        <div className='abilities-other-container'>
+                            <h3>Abilities</h3>
+                            <ul>
+                                {abilityInfo.map((ability, key) => (
+                                    <li key={key}>{isHiddenAbility(ability.pokemon ,pokemoninfo.name) + ability.name + ': '+getFlavorTextLanguage('en', ability.flavor_text_entries)}</li>
+                                ))}
+                            </ul>
+                            <h3>Other Info</h3>
+                            <ul>
+                                <li>Height: {pokemoninfo.height}</li>
+                                <li>Weight: {pokemoninfo.weight}</li>
+                            </ul>
+                        </div>
                     </div>
                     <div className='pokeGridItem-5'>
                         <MovesTable Movelist={MovesInfo}/>
@@ -186,17 +189,34 @@ function getFlavorTextLanguage(language, flavorTextArray){
     return (flavorText);
   }
 
+  function isHiddenAbility (pokeAbilitiesArray, pokeName){
+
+        let isHidden = false;
+
+        pokeAbilitiesArray.map((abilityHaver) => {
+            if(abilityHaver.pokemon.name === pokeName){
+                isHidden = abilityHaver.is_hidden;
+            }
+        })
+
+        if(isHidden){
+            return('(Hidden Ability) ');
+        }else{
+            return '';
+        }
+  }
+
     /*What to add:
     -Pokemon Sprites (maybe be able to cycle through all of them?)
     -Graph of pokemon stats (DONE)
     -Moves (in collapsible/scrollable list, will also show flavor text and what version learned in) (DONE)
     -Types with little type icons (DONE)
-    -Add type defenses
+    -Add type defenses (DONE)
     -add egg groups
     -add pokemon flavor text
     -add evolutions
     -add hidden ability
-    -add ability flavor text
+    -add ability flavor text (DONE)
     -add generational learnset
     */
 }

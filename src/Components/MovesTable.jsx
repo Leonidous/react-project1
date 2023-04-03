@@ -17,13 +17,13 @@ function MovesTable(Movelist) {
         </thead>
         <tbody>
         {Movelist.Movelist.map((move) => (
-          <tr>
+          <tr key={move.name}>
             <td>{move.name}</td>
             <td>{move.power}</td>
             <td>{move.accuracy}</td>
             <td>{move.pp}</td>
             <td>{getFlavorTextLanguage('en', move.flavor_text_entries)}</td>
-            <td><img src={PokeType(move.type.name)} title={move.type.name} className='moveType'/></td>
+            <td><img src={PokeType(move.type.name)} title={move.type.name} className='moveType' alt={move.type.name}/></td>
           </tr>
         ))}
         </tbody>
@@ -37,7 +37,7 @@ function getFlavorTextLanguage(language, flavorTextArray){
   let flavorText = '';
 
   for(let i in flavorTextArray){
-    if(flavorTextArray[i].language.name == language){
+    if(flavorTextArray[i].language.name === language){
       flavorText = flavorTextArray[i].flavor_text;
       break;
     }

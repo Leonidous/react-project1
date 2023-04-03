@@ -1,5 +1,6 @@
 import Table from 'react-bootstrap/Table';
 import '../App.css'
+import React from 'react';
 
 function TypeChart(types) {
 
@@ -12,8 +13,6 @@ function TypeChart(types) {
         damageRelations = typeDamageCalc(damageRelations);
     }
 
-    console.log(damageRelations);
-
   return (
     <div className='typesTableContainer'>
       <Table striped bordered hover className='typesTable'>
@@ -21,35 +20,35 @@ function TypeChart(types) {
         </thead>
         <tbody>
           <tr>
-            <td><img src={PokeType('normal')} title={'normal'} className='Type'/><text className='typeText'>Normal</text></td>
-            <td><img src={PokeType('fire')} title={'fire'} className='Type'/><text className='typeText'>Fire</text></td>
-            <td><img src={PokeType('water')} title={'water'} className='Type'/><text className='typeText'>Water</text></td>
-            <td><img src={PokeType('electric')} title={'electric'} className='Type'/><text className='typeText'>Electric</text></td>
-            <td><img src={PokeType('grass')} title={'grass'} className='Type'/><text className='typeText'>Grass</text></td>
-            <td><img src={PokeType('ice')} title={'ice'} className='Type'/><text className='typeText'>Ice</text></td>
-            <td><img src={PokeType('fighting')} title={'fighting'} className='Type'/><text className='typeText'>Fighting</text></td>
-            <td><img src={PokeType('poison')} title={'poison'} className='Type'/><text className='typeText'>Poison</text></td>
-            <td><img src={PokeType('ground')} title={'ground'} className='Type'/><text className='typeText'>Ground</text></td>
+            <td><img src={PokeType('normal')} title={'normal'} className='Type' alt='normal'/><div className='typeText'>Normal</div></td>
+            <td><img src={PokeType('fire')} title={'fire'} className='Type' alt='fire'/><div className='typeText'>Fire</div></td>
+            <td><img src={PokeType('water')} title={'water'} className='Type' alt='water'/><div className='typeText'>Water</div></td>
+            <td><img src={PokeType('electric')} title={'electric'} className='Type' alt='electric'/><div className='typeText'>Electric</div></td>
+            <td><img src={PokeType('grass')} title={'grass'} className='Type' alt='grass'/><div className='typeText'>Grass</div></td>
+            <td><img src={PokeType('ice')} title={'ice'} className='Type' alt='ice'/><div className='typeText'>Ice</div></td>
+            <td><img src={PokeType('fighting')} title={'fighting'} className='Type' alt='fighting'/><div className='typeText'>Fighting</div></td>
+            <td><img src={PokeType('poison')} title={'poison'} className='Type' alt='poison'/><div className='typeText'>Poison</div></td>
+            <td><img src={PokeType('ground')} title={'ground'} className='Type' alt='ground'/><div className='typeText'>Ground</div></td>
           </tr>
           <tr>
-            {damageRelations.slice(0,9).map((typeDmg) => (
-                <>{typeDamageDisplay(typeDmg)}</>
+            {damageRelations.slice(0,9).map((typeDmg, index) => (
+                <React.Fragment key={`typeDmg-${index}`}>{typeDamageDisplay(typeDmg)}</React.Fragment>
             ))}
           </tr>
           <tr>
-            <td><img src={PokeType('flying')} title={'flying'} className='Type'/><text className='typeText'>Flying</text></td>
-            <td><img src={PokeType('psychic')} title={'psychic'} className='Type'/><text className='typeText'>Psychic</text></td>
-            <td><img src={PokeType('bug')} title={'bug'} className='Type'/><text className='typeText'>Bug</text></td>
-            <td><img src={PokeType('rock')} title={'rock'} className='Type'/><text className='typeText'>Rock</text></td>
-            <td><img src={PokeType('ghost')} title={'ghost'} className='Type'/><text className='typeText'>Ghost</text></td>
-            <td><img src={PokeType('dragon')} title={'dragon'} className='Type'/><text className='typeText'>Dragon</text></td>
-            <td><img src={PokeType('dark')} title={'dark'} className='Type'/><text className='typeText'>Dark</text></td>
-            <td><img src={PokeType('steel')} title={'steel'} className='Type'/><text className='typeText'>Steel</text></td>
-            <td><img src={PokeType('fairy')} title={'fairy'} className='Type'/><text className='typeText'>Fairy</text></td>
+            <td><img src={PokeType('flying')} title={'flying'} className='Type' alt='flying'/><div className='typeText'>Flying</div></td>
+            <td><img src={PokeType('psychic')} title={'psychic'} className='Type' alt='psychic'/><div className='typeText'>Psychic</div></td>
+            <td><img src={PokeType('bug')} title={'bug'} className='Type' alt='bug'/><div className='typeText'>Bug</div></td>
+            <td><img src={PokeType('rock')} title={'rock'} className='Type' alt='rock'/><div className='typeText'>Rock</div></td>
+            <td><img src={PokeType('ghost')} title={'ghost'} className='Type' alt='ghost'/><div className='typeText'>Ghost</div></td>
+            <td><img src={PokeType('dragon')} title={'dragon'} className='Type' alt='dragon'/><div className='typeText'>Dragon</div></td>
+            <td><img src={PokeType('dark')} title={'dark'} className='Type' alt='dark'/><div className='typeText'>Dark</div></td>
+            <td><img src={PokeType('steel')} title={'steel'} className='Type' alt='steel'/><div className='typeText'>Steel</div></td>
+            <td><img src={PokeType('fairy')} title={'fairy'} className='Type' alt='fairy'/><div className='typeText'>Fairy</div></td>
           </tr>
           <tr>
-            {damageRelations.slice(9,18).map((typeDmg) => (
-                <>{typeDamageDisplay(typeDmg)}</>
+            {damageRelations.slice(9,18).map((typeDmg, index) => (
+                <React.Fragment key={`typeDmg-${index}`}>{typeDamageDisplay(typeDmg)}</React.Fragment>
             ))}
           </tr>
         </tbody>

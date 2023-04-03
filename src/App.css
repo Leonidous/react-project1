@@ -14,19 +14,34 @@
 .pokeGridItem-1 {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .pokeGridItem-2 {
   margin: auto;
   height: 518px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokeGridItem-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pokeGridItem-5 {
   padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pokeGridItem-6 {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pokeTypeImg {
@@ -76,6 +91,17 @@
   border-width: 20px;
   border-radius: 25px;
   background-color: white;
+}
+
+.abilities-other-container {
+  margin: auto;
+  display: inline-block;
+  border-style: solid;
+  border-color: #6a8a9c;
+  border-width: 20px;
+  border-radius: 25px;
+  background-color: white;
+  padding: 10px;
 }
 
 .typesTable {
