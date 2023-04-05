@@ -93,6 +93,13 @@
   background-color: white;
 }
 
+.TypeDefenceTitle {
+  text-align: center;
+  font-size: large;
+  background-color: #6a8a9c;
+  font-weight: 800;
+}
+
 .abilities-other-container {
   margin: auto;
   display: inline-block;
