@@ -6,6 +6,7 @@ import PokeChart from './PokeStatChart';
 import PokeImgCarousel from './PokeImgCarousel';
 import MovesTable from './MovesTable';
 import TypeChart from './TypeDefences';
+import PokeDexInfoTable from './PokeDexInfo';
 import '../App.css'
 
 export function PokeCard() {
@@ -66,36 +67,16 @@ export function PokeCard() {
                 <h1 className='PokeCardTitle'>{pokemoninfo.name}</h1>
                 <div id='pokecard-grid'>
                     <div className='pokeGridItem-1'>
-                        <PokeImgCarousel 
-                            normal={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+pokemoninfo.id+'.png'} 
-                            shiny={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/'+pokemoninfo.id+'.png'}
-                        />
+                        <div className='pokeImgCarouselContainer'>
+                            <PokeImgCarousel 
+                                normal={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+pokemoninfo.id+'.png'} 
+                                shiny={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/'+pokemoninfo.id+'.png'}
+                            />
+                            <PokeDexInfoTable PokeInfo = {pokemoninfo}/>
+                        </div>
                     </div>
                     <div className='pokeGridItem-2'>
                         <PokeChart stats={pokeStats}/>
-                    </div>
-                    <div className='pokeGridItem-3'>
-                        <h3 style={{textAlign: 'center'}}>Type(s)</h3>
-                        <div id='TypeList'>
-                            {pokemoninfo.types.map((typelist) => (
-                                <div className='pokeTypeImg' key={typelist.type.name}><img src={PokeType(typelist.type.name)} alt='Type'/><div className='pokeTypeName'>{typelist.type.name}</div></div>
-                            ))}
-                        </div>
-                    </div>
-                    <div className='pokeGridItem-4'>
-                        <div className='abilities-other-container'>
-                            <h3>Abilities</h3>
-                            <ul>
-                                {abilityInfo.map((ability, key) => (
-                                    <li key={key}>{isHiddenAbility(ability.pokemon ,pokemoninfo.name) + ability.name + ': '+getFlavorTextLanguage('en', ability.flavor_text_entries)}</li>
-                                ))}
-                            </ul>
-                            <h3>Other Info</h3>
-                            <ul>
-                                <li>Height: {pokemoninfo.height}</li>
-                                <li>Weight: {pokemoninfo.weight}</li>
-                            </ul>
-                        </div>
                     </div>
                     <div className='pokeGridItem-5'>
                         <MovesTable Movelist={MovesInfo}/>
@@ -107,104 +88,6 @@ export function PokeCard() {
             </>
         )
     }
-
-
-
-function PokeType(type){
-    const images = importAll(require.context('../Images/typeIcons', false, /\.(png|jpe?g|svg)$/));
-
-    if(type==='grass'){
-        return(images['Grass_icon.png']);
-    }
-    if(type==='poison'){
-        return(images['Poison_icon.png']);
-    }
-    if(type==='bug'){
-        return(images['Bug_icon.png']);
-    }
-    if(type==='dark'){
-        return(images['Dark_icon.png']);
-    }
-    if(type==='dragon'){
-        return(images['Dragon_icon.png']);
-    }
-    if(type==='electric'){
-        return(images['Electric_icon.png']);
-    }
-    if(type==='fairy'){
-        return(images['Fairy_icon.png']);
-    }
-    if(type==='fighting'){
-        return(images['Fighting_icon.png']);
-    }
-    if(type==='fire'){
-        return(images['Fire_icon.png']);
-    }
-    if(type==='flying'){
-        return(images['Flying_icon.png']);
-    }
-    if(type==='ghost'){
-        return(images['Ghost_icon.png']);
-    }
-    if(type==='ground'){
-        return(images['Ground_icon.png']);
-    }
-    if(type==='ice'){
-        return(images['Ice_icon.png']);
-    }
-    if(type==='normal'){
-        return(images['Normal_icon.png']);
-    }
-    if(type==='psychic'){
-        return(images['Psychic_icon.png']);
-    }
-    if(type==='rock'){
-        return(images['Rock_icon.png']);
-    }
-    if(type==='steel'){
-        return(images['Steel_icon.png']);
-    }
-    if(type==='water'){
-        return(images['Water_icon.png']);
-    }
-}
-
-function importAll(r) {
-    let images = {};
-     r.keys().forEach((item, index) => { images[item.replace('./', '')] = r(item); });
-    return images
-}
-
-function getFlavorTextLanguage(language, flavorTextArray){
-  
-    let flavorText = '';
-  
-    for(let i in flavorTextArray){
-      if(flavorTextArray[i].language.name === language){
-        flavorText = flavorTextArray[i].flavor_text;
-        break;
-      }
-    }
-  
-    return (flavorText);
-  }
-
-  function isHiddenAbility (pokeAbilitiesArray, pokeName){
-
-        let isHidden = false;
-
-        pokeAbilitiesArray.map((abilityHaver) => {
-            if(abilityHaver.pokemon.name === pokeName){
-                isHidden = abilityHaver.is_hidden;
-            }
-        })
-
-        if(isHidden){
-            return('(Hidden Ability) ');
-        }else{
-            return '';
-        }
-  }
 
     /*What to add:
     -Pokemon Sprites (maybe be able to cycle through all of them?)
