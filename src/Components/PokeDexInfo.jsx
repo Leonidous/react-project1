@@ -7,18 +7,21 @@ function PokeDexInfoTable(PokeInfo) {
     let PokemonInfo = PokeInfo.PokeInfo;
     let abilityEndpoints = [];
 
+    const [abilityInfo] = useArrayFetch(abilityEndpoints);
+    const [speciesInfo] = useFetch(PokemonInfo.species.url);
+
     if(!(Object.keys(PokemonInfo).length === 0)){
         PokemonInfo.abilities.map((abObj) => 
         abilityEndpoints.push(abObj.ability.url)
         )
-    }
 
-    const [abilityInfo] = useArrayFetch(abilityEndpoints);
-    const [speciesInfo] = useFetch(PokemonInfo.species.url);
+        console.log(speciesInfo);
+        console.log(PokemonInfo);
+    }
 
     return (
         <div className='pokeDexInfoContainer'>
-        <div>Pokédex Data</div>
+        <div className='pokeDexDataTitle'>Pokédex Data</div>
         <Table striped bordered hover className='pokeDexInfo'>
             <thead>
             </thead>
@@ -61,7 +64,15 @@ function PokeDexInfoTable(PokeInfo) {
                 </tr>
                 <tr>
                     <td>Local №</td>
-                    <td>{PokemonInfo.id}</td>
+                    <td>
+                        <ul className='versionNumberList'>
+                            <li>{getVersionIndex('red', PokemonInfo.game_indices) + ' (Red/Blue/Yellow)'}</li>
+                            <li>{getVersionIndex('gold', PokemonInfo.game_indices) + ' (Gold/Silver/Crystal)'}</li>
+                            <li>{getVersionIndex('firered', PokemonInfo.game_indices) + ' (FireRed/LeafGreen)'}</li>
+                            <li>{getVersionIndex('heartgold', PokemonInfo.game_indices) + ' (HeartGold/SoulSilver)'}</li>
+                            <li>{getVersionIndex('black', PokemonInfo.game_indices) + ' (Black/White)'}</li>
+                        </ul>
+                    </td>
                 </tr>
             </tbody>
         </Table>
@@ -111,6 +122,22 @@ function getGenusTextLanguage(language, TextArray){
     }
 
     return (genusText);
+}
+
+function getVersionIndex(version, TextArray){
+  
+    let index = '';
+    
+    for(let i in TextArray){
+        if(TextArray[i].version.name === version){
+        index = TextArray[i].game_index;
+        break;
+        }
+    }
+
+    return(index);
+
+    //return (genusText);
 }
 
 function PokeType(type){

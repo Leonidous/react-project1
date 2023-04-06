@@ -67,7 +67,7 @@ export function PokeCard() {
                 <h1 className='PokeCardTitle'>{pokemoninfo.name}</h1>
                 <div id='pokecard-grid'>
                     <div className='pokeGridItem-1'>
-                        <div className='pokeImgCarouselContainer'>
+                        <div className='pokeDataContainer'>
                             <PokeImgCarousel 
                                 normal={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+pokemoninfo.id+'.png'} 
                                 shiny={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/'+pokemoninfo.id+'.png'}
@@ -78,10 +78,10 @@ export function PokeCard() {
                     <div className='pokeGridItem-2'>
                         <PokeChart stats={pokeStats}/>
                     </div>
-                    <div className='pokeGridItem-5'>
+                    <div className='pokeGridItem-3'>
                         <MovesTable Movelist={MovesInfo}/>
                     </div>
-                    <div className='pokeGridItem-6'>
+                    <div className='pokeGridItem-4'>
                         <TypeChart types={typeInfo}/>
                     </div>
                 </div>

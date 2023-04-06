@@ -8,7 +8,7 @@ export default function PokeImgCarousel(img) {
     const onMediaFallback = event => event.target.src = fallbackimg;
 
     return ( 
-        <div>
+        <div className='pokeImgCarouselContainer'>
             <Carousel interval={null}>
                 <Carousel.Item className="w-500px">
                         <img

@@ -12,14 +12,26 @@
 }
 
 .pokeGridItem-1 {
+  padding: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.versionNumberList {
+  list-style-type: none;
+}
+
 .pokeGridItem-2 {
   margin: auto;
   height: 518px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokeGridItem-3 {
+  padding: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,32 +43,19 @@
   align-items: center;
 }
 
-.pokeGridItem-5 {
-  padding: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.pokeGridItem-6 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .pokeTypeImg {
   display: inline-block;
   text-align: center;
+  margin-left: 3px;
 }
 
 #TypeList {
   display: flex;
-  justify-content: center;
   width: auto;
 }
 
 .PokeCardTitle{
-  text-align:center;
+  text-align: center;
 }
 
 .Carousel-text {
@@ -70,7 +69,7 @@
 
 .movesTableContainer {
   height: 500px;
-  overflow: scroll;
+  overflow-y: scroll;
   overflow-x: hidden;
   background-color: white;
   border-style: solid;
@@ -103,17 +102,6 @@
   font-size: large;
   background-color: #6a8a9c;
   font-weight: 700;
-}
-
-.abilities-other-container {
-  margin: auto;
-  display: inline-block;
-  border-style: solid;
-  border-color: #6a8a9c;
-  border-width: 20px;
-  border-radius: 25px;
-  background-color: white;
-  padding: 10px;
 }
 
 .typesTable {
@@ -149,14 +137,35 @@
   width: 700px
 }
 
-.pokeImgCarouselContainer {
-  display: inline-block;
-  width: 500px;
+.pokeDataContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
   background-color: white;
   border-style: solid;
   border-color: #6a8a9c;
   border-width: 20px;
   border-radius: 25px;
+}
+
+.pokeImgCarouselContainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel .slide {
+  vertical-align: middle;
+}
+
+.pokeDexDataTitle {
+  text-align: center;
+}
+
+.pokeDexInfo td, .movesTable th {
+  border-left: none;
+  border-right: none;
 }
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
