@@ -7,6 +7,7 @@ import PokeImgCarousel from './PokeImgCarousel';
 import MovesTable from './MovesTable';
 import TypeChart from './TypeDefences';
 import PokeDexInfoTable from './PokeDexInfo';
+import PokeChart2 from './PokeChart2';
 import '../App.css'
 
 export function PokeCard() {
@@ -83,6 +84,9 @@ export function PokeCard() {
                     </div>
                     <div className='pokeGridItem-4'>
                         <TypeChart types={typeInfo}/>
+                    </div>
+                    <div className='pokeGridItem-4'>
+                        <PokeChart2 stats={pokemoninfo.stats}/>
                     </div>
                 </div>
             </>

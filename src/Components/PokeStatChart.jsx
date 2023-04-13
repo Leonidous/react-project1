@@ -24,7 +24,6 @@ export const options = {
     indexAxis: 'y',
     responsive: true,
     maintainAspectRatio: false,
-    borderColor: 'black',
     elements: {
         bar: {
             borderWidth: 3,
@@ -66,23 +65,21 @@ export const options = {
                 }
             },
             border: {
-                display: true,
+                display: false,
             },
+            grid: {
+                borderColor: 'black',
+                borderWidth: 1,
+                borderDash: [1, 0],
+                drawTicks: false,
+                color: 'rgba(0, 0, 0, 0.1)',
+            },
+            ticks: {
+                showLabelBackdrop: true,
+            }
         },
         x: {
-            ticks: {
-                color: 'black',
-                showLabelBackdrop: false,
-                textStrokeWidth: 3,
-                textStrokeColor: 'white',
-                font: {
-                    weight: 'bold',
-                    size: 14,
-                }
-            },
-            border: {
-                display: true,
-            },
+            display: false,
         },
     },
 };

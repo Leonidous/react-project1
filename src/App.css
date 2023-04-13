@@ -202,3 +202,67 @@
 .carousel-control-next {
   right: 0;
 }
+
+.statsTable {
+  width: 100%;
+}
+
+.statsTable td, th{
+  padding: 4px 10px;
+}
+
+.statsTable td {
+  border-width: 1px 0;
+  border-style: solid;
+  border-color: #f0f0f0;
+}
+
+.statsTable th{
+  font-size: .875rem;
+  font-weight: normal;
+  text-align: right;
+  border-width: 1px 0;
+  border-style: solid;
+  border-color: #f0f0f0;
+}
+
+.cellNum{
+  white-space: nowrap;
+  text-align: right;
+}
+
+.cellBar {
+  width: 100%;
+  min-width: 150px;
+}
+
+.hpBar {
+  background-color: #e4000f;
+}
+
+.atkBar {
+  background-color: #f08030;
+}
+
+.defBar {
+  background-color: #f8d030;
+}
+
+.spAtkBar {
+  background-color: #6890f0;
+}
+
+.spDefBar {
+  background-color: #78c850;
+}
+
+.spdBar {
+  background-color: #f85888;
+}
+
+.barchartBar {
+  height: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid #737373;
+  border-color: rgba(0,0,0,.15);
+}
