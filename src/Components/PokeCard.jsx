@@ -2,7 +2,6 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import useFetch from '../Hooks/Pokeapi';
 import useArrayFetch from '../Hooks/PokeArrayApi';
-import PokeChart from './PokeStatChart';
 import PokeImgCarousel from './PokeImgCarousel';
 import MovesTable from './MovesTable';
 import TypeChart from './TypeDefences';
@@ -76,17 +75,14 @@ export function PokeCard() {
                             <PokeDexInfoTable PokeInfo = {pokemoninfo}/>
                         </div>
                     </div>
-                    <div className='pokeGridItem-2'>
-                        <PokeChart stats={pokeStats}/>
+                    <div className='pokeGridItem-5'>
+                        <PokeChart2 stats={pokemoninfo.stats}/>
                     </div>
                     <div className='pokeGridItem-3'>
                         <MovesTable Movelist={MovesInfo}/>
                     </div>
                     <div className='pokeGridItem-4'>
                         <TypeChart types={typeInfo}/>
-                    </div>
-                    <div className='pokeGridItem-4'>
-                        <PokeChart2 stats={pokemoninfo.stats}/>
                     </div>
                 </div>
             </>

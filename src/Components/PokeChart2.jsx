@@ -5,7 +5,7 @@ export default function PokeChart2(stats) {
     let pokeStats = stats.stats;
     return (
         <>  
-            <div>
+            <div className='statsTableDiv'>
                 <table className='statsTable'>
                     <thead>
                     </thead>
@@ -75,8 +75,8 @@ export default function PokeChart2(stats) {
                         </tr>
                     </tfoot>
                 </table>
+                <div><p>The ranges shown on the right are for a level 100 Pokémon. Max values are based on a beneficial nature, maximum EVs and IVs; minimum values are based on a hindering nature, minimum EVs and IVs.</p></div>
             </div>
-            <p>The ranges shown on the right are for a level 100 Pokémon. Max values are based on a beneficial nature, maximum EVs and IVs; minimum values are based on a hindering nature, minimum EVs and IVs.</p>
         </>
     )
 }
