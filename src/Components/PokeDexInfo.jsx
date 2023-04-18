@@ -21,80 +21,64 @@ function PokeDexInfoTable(PokeInfo) {
 
     return (
         <div className='pokeDexInfoContainer'>
-        <div className='pokeDexDataTitle'>Pokédex Data</div>
-        <Table striped bordered hover className='pokeDexInfo'>
-            <thead>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>National №</td>
-                    <td>{PokemonInfo.id}</td>
-                </tr>
-                <tr>
-                    <td>Type</td>
-                    <td>
-                        <div id='TypeList'>
-                            {PokemonInfo.types.map((typelist) => (
-                                <div className='pokeTypeImg' key={typelist.type.name}><img src={PokeType(typelist.type.name)} alt='Type' className='TypeDex'/><div className='pokeTypeName'>{typelist.type.name}</div></div>
-                            ))}
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Genus</td>
-                    <td>{getGenusTextLanguage('en', speciesInfo.genera)}</td>
-                </tr>
-                <tr>
-                    <td>Height</td>
-                    <td>{((PokemonInfo.height)*0.1)+ ' m'}</td>
-                </tr>
-                <tr>
-                    <td>Weight</td>
-                    <td>{((PokemonInfo.weight)*0.1)+ ' kg'}</td>
-                </tr>
-                <tr>
-                    <td>Abilities</td>
-                    <td>
-                        <ul>
-                            {abilityInfo.map((ability, key) => (
-                                <li key={key}>{isHiddenAbility(ability.pokemon , PokemonInfo.name) + ability.name + ': '+getTextLanguage('en', ability.flavor_text_entries)}</li>
-                            ))}
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Local №</td>
-                    <td>
-                        <ul className='versionNumberList'>
-                            <li>{getVersionIndex('red', PokemonInfo.game_indices) + ' (Red/Blue/Yellow)'}</li>
-                            <li>{getVersionIndex('gold', PokemonInfo.game_indices) + ' (Gold/Silver/Crystal)'}</li>
-                            <li>{getVersionIndex('firered', PokemonInfo.game_indices) + ' (FireRed/LeafGreen)'}</li>
-                            <li>{getVersionIndex('heartgold', PokemonInfo.game_indices) + ' (HeartGold/SoulSilver)'}</li>
-                            <li>{getVersionIndex('black', PokemonInfo.game_indices) + ' (Black/White)'}</li>
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </Table>
+            <div className='pokeDexDataTitle'>Pokédex Data</div>
+            <Table striped bordered hover className='pokeDexInfo'>
+                <thead>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>National №</td>
+                        <td>{PokemonInfo.id}</td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td>
+                            <div id='TypeList'>
+                                {PokemonInfo.types.map((typelist) => (
+                                    <div className='pokeTypeImg' key={typelist.type.name}><img src={PokeType(typelist.type.name)} alt='Type' className='TypeDex'/><div className='pokeTypeName'>{typelist.type.name}</div></div>
+                                ))}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Genus</td>
+                        <td>{getGenusTextLanguage('en', speciesInfo.genera)}</td>
+                    </tr>
+                    <tr>
+                        <td>Height</td>
+                        <td>{((PokemonInfo.height)*0.1).toFixed(1)+ ' m'}</td>
+                    </tr>
+                    <tr>
+                        <td>Weight</td>
+                        <td>{((PokemonInfo.weight)*0.1).toFixed(1)+ ' kg'}</td>
+                    </tr>
+                    <tr>
+                        <td>Abilities</td>
+                        <td>
+                            <ul>
+                                {abilityInfo.map((ability, key) => (
+                                    <li key={key}>{isHiddenAbility(ability.pokemon , PokemonInfo.name) + ability.name + ': '+getTextLanguage('en', ability.flavor_text_entries)}</li>
+                                ))}
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Local №</td>
+                        <td>
+                            <ul className='versionNumberList'>
+                                <li>{getVersionIndex('red', PokemonInfo.game_indices) + ' (Red/Blue/Yellow)'}</li>
+                                <li>{getVersionIndex('gold', PokemonInfo.game_indices) + ' (Gold/Silver/Crystal)'}</li>
+                                <li>{getVersionIndex('firered', PokemonInfo.game_indices) + ' (FireRed/LeafGreen)'}</li>
+                                <li>{getVersionIndex('heartgold', PokemonInfo.game_indices) + ' (HeartGold/SoulSilver)'}</li>
+                                <li>{getVersionIndex('black', PokemonInfo.game_indices) + ' (Black/White)'}</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </Table>
         </div>
     );
 }
-
-/*
-<div className='abilities-other-container'>
-    <h3>Abilities</h3>
-    <ul>
-        {abilityInfo.map((ability, key) => (
-            <li key={key}>{isHiddenAbility(ability.pokemon ,pokemoninfo.name) + ability.name + ': '+getFlavorTextLanguage('en', ability.flavor_text_entries)}</li>
-        ))}
-    </ul>
-    <h3>Other Info</h3>
-    <ul>
-        <li>Height: {pokemoninfo.height}</li>
-        <li>Weight: {pokemoninfo.weight}</li>
-    </ul>
-</div>
-*/
 
 function getTextLanguage(language, TextArray){
   
