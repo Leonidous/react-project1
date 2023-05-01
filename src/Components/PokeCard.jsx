@@ -75,7 +75,7 @@ export function PokeCard() {
                             <PokeDexInfoTable PokeInfo = {pokemoninfo}/>
                         </div>
                     </div>
-                    <div className='pokeGridItem-5'>
+                    <div className='pokeGridItem-2'>
                         <PokeChart2 stats={pokemoninfo.stats}/>
                     </div>
                     <div className='pokeGridItem-3'>
