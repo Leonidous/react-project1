@@ -4,11 +4,6 @@
   border-color: #e4000f;
   background-color: rgba(70, 150, 197, 0.562);
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto;
-  grid-template-areas:
-  "header header header"
-  "one two three";
   margin: auto;
   justify-content: center;
   padding: 20px;

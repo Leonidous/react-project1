@@ -7,6 +7,7 @@ import MovesTable from './MovesTable';
 import TypeChart from './TypeDefences';
 import PokeDexInfoTable from './PokeDexInfo';
 import PokeChart2 from './PokeChart2';
+import { Container, Row, Col } from 'react-bootstrap';
 import '../App.css'
 
 export function PokeCard() {
@@ -65,25 +66,31 @@ export function PokeCard() {
         return (
             <>
                 <h1 className='PokeCardTitle'>{pokemoninfo.name}</h1>
-                <div id='pokecard-grid'>
-                    <div className='pokeGridItem-1'>
-                        <div className='pokeDataContainer'>
-                            <PokeImgCarousel 
-                                normal={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+pokemoninfo.id+'.png'} 
-                                shiny={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/'+pokemoninfo.id+'.png'}
-                            />
-                            <PokeDexInfoTable PokeInfo = {pokemoninfo}/>
-                        </div>
-                    </div>
-                    <div className='pokeGridItem-2'>
-                        <PokeChart2 stats={pokemoninfo.stats}/>
-                    </div>
-                    <div className='pokeGridItem-3'>
-                        <MovesTable Movelist={MovesInfo}/>
-                    </div>
-                    <div className='pokeGridItem-4'>
-                        <TypeChart types={typeInfo}/>
-                    </div>
+                <div div id='pokecard-grid'>
+                    <Row>
+                        <Col>
+                            <div className='pokeDataContainer'>
+                                <PokeImgCarousel 
+                                    normal={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+pokemoninfo.id+'.png'} 
+                                    shiny={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/'+pokemoninfo.id+'.png'}
+                                />
+                                <PokeDexInfoTable PokeInfo = {pokemoninfo}/>
+                            </div>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <PokeChart2 stats={pokemoninfo.stats}/>
+                        </Col>
+                        <Col>
+                            <MovesTable Movelist={MovesInfo}/>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <TypeChart types={typeInfo}/>
+                        </Col>
+                    </Row>
                 </div>
             </>
         )
