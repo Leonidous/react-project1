@@ -8,7 +8,7 @@ import TypeChart from './TypeDefences';
 import PokeDexInfoTable from './PokeDexInfo';
 import PokeChart2 from './PokeChart2';
 import { Container, Row, Col } from 'react-bootstrap';
-import '../App.css'
+import '../App.css';
 
 export function PokeCard() {
     const {pokemon} =  useParams();
@@ -66,16 +66,16 @@ export function PokeCard() {
         return (
             <>
                 <h1 className='PokeCardTitle'>{pokemoninfo.name}</h1>
-                <div div id='pokecard-grid'>
+                <Container class id='pokecard-grid'>
                     <Row>
                         <Col>
-                            <div className='pokeDataContainer'>
+                            <Container className='pokeDataContainer'>
                                 <PokeImgCarousel 
                                     normal={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+pokemoninfo.id+'.png'} 
                                     shiny={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/'+pokemoninfo.id+'.png'}
                                 />
                                 <PokeDexInfoTable PokeInfo = {pokemoninfo}/>
-                            </div>
+                            </Container>
                         </Col>
                     </Row>
                     <Row>
@@ -91,7 +91,7 @@ export function PokeCard() {
                             <TypeChart types={typeInfo}/>
                         </Col>
                     </Row>
-                </div>
+                </Container>
             </>
         )
     }

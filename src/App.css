@@ -293,3 +293,7 @@
   border: 1px solid #737373;
   border-color: rgba(0,0,0,.15);
 }
+
+.NavBar {
+  background-color: #e4000f;
+}

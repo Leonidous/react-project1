@@ -2,13 +2,13 @@ import './App.css'
 import {PokeCard} from './Components/PokeCard'
 import { PokePager } from './Components/PokePager';
 import { PokeSearcher } from './Components/PokeSearch'
-import Navbar from './Components/Navbar'
+import Navbar2 from './Components/Navbar2'
 import {Route, Routes} from 'react-router-dom'
 
 function App() {
   return (
     <>
-      <Navbar />
+      <Navbar2 />
       <Routes>
         <Route path="/" element={<PokePager/>}/>
         <Route path="/Search/:search" element={<PokeSearcher/>}/>
