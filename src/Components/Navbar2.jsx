@@ -25,7 +25,7 @@ export default function Navbar2() {
     return (
     <Navbar className="NavBar" variant="dark" expand="lg">
         <Container>
-        <Navbar.Brand href="#home">Pokédex</Navbar.Brand>
+        <Navbar.Brand>Pokédex</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">

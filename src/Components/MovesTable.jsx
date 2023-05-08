@@ -1,9 +1,10 @@
 import Table from 'react-bootstrap/Table';
+import Container from 'react-bootstrap/Container';
 import '../App.css'
 
 function MovesTable(Movelist) {
   return (
-    <div className='movesTableContainer'>
+    <Container className='movesTableContainer'>
       <Table striped bordered hover className='movesTable'>
         <thead>
           <tr>
@@ -28,7 +29,7 @@ function MovesTable(Movelist) {
         ))}
         </tbody>
       </Table>
-    </div>
+    </Container>
   );
 }
 

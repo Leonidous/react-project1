@@ -8,6 +8,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import { PokeContent } from './PokeContentGen';
+import PokeContentGen2 from './PokeContentGen2';
 import { createBrowserHistory } from '@remix-run/router';
 import { useEffect } from 'react';
 import qs from 'qs';
@@ -102,7 +103,7 @@ export function PokePager() {
             </ThemeProvider>
           </Stack>
 
-          <PokeContent page={page} pokePerPage={perPage}/>
+          <PokeContentGen2 page={page} pokePerPage={perPage}/>
         </>
       );
     }

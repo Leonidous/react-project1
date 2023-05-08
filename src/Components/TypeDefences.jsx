@@ -1,4 +1,5 @@
 import Table from 'react-bootstrap/Table';
+import Container from 'react-bootstrap/Container';
 import '../App.css'
 import React from 'react';
 
@@ -14,10 +15,10 @@ function TypeChart(types) {
     }
 
   return (
-    <div className='typesTableContainer'>
-        <div className='TypeDefenceTitle'>Type Defences</div>
+    <Container className='typesTableContainer'>
         <Table striped bordered hover className='typesTable'>
-            <thead>
+            <thead style={{textAlign:'center'}}>
+                Type Defence
             </thead>
             <tbody>
                 <tr>
@@ -54,7 +55,7 @@ function TypeChart(types) {
                 </tr>
             </tbody>
         </Table>
-    </div>
+    </Container>
   );
 }
 

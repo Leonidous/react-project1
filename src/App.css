@@ -81,6 +81,7 @@
   border-color: #6a8a9c;
   border-width: 20px;
   border-radius: 25px;
+  padding: 0;
 }
 
 .movesTable {
@@ -100,6 +101,7 @@
   border-width: 20px;
   border-radius: 25px;
   background-color: white;
+  padding: 0;
   overflow-x: auto;
 }
 
@@ -112,6 +114,7 @@
 }
 
 .typesTable {
+  width: 100%;
   margin: auto;
   border-color: black;
   min-width: 630px;
@@ -119,7 +122,6 @@
 
 .typeText {
   color:black;
-  display: block;
   text-align: center;
 }
 
@@ -231,7 +233,7 @@
   border-radius: 25px;
   width: 100%;
   position: relative;
-  padding: 20px;
+  padding: 10px;
 }
 
 .statsTable td, th{
@@ -296,4 +298,18 @@
 
 .NavBar {
   background-color: #e4000f;
+}
+
+.poke-cards {
+  padding: 20px;
+}
+
+.pokecard-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.pokecard-link:hover {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }

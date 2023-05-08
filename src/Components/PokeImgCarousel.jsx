@@ -1,6 +1,7 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import fallbackimg from '../Images/FallbackImage.png'
+import Container from 'react-bootstrap/Container';
 import '../App.css'
 
 export default function PokeImgCarousel(img) {
@@ -8,7 +9,7 @@ export default function PokeImgCarousel(img) {
     const onMediaFallback = event => event.target.src = fallbackimg;
 
     return ( 
-        <div className='pokeImgCarouselContainer'>
+        <Container className='pokeImgCarouselContainer'>
             <Carousel interval={null}>
                 <Carousel.Item className="w-500px">
                         <img
@@ -33,6 +34,6 @@ export default function PokeImgCarousel(img) {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
-        </div>
+        </Container>
     )
 }

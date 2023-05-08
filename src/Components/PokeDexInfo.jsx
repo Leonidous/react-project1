@@ -1,6 +1,7 @@
 import Table from 'react-bootstrap/Table';
 import useArrayFetch from '../Hooks/PokeArrayApi';
 import useFetch from '../Hooks/Pokeapi';
+import Container from 'react-bootstrap/Container';
 import '../App.css'
 
 function PokeDexInfoTable(PokeInfo) {
@@ -20,8 +21,8 @@ function PokeDexInfoTable(PokeInfo) {
     }
 
     return (
-        <div className='pokeDexInfoContainer'>
-            <div className='pokeDexDataTitle'>Pokédex Data</div>
+        <Container className='pokeDexInfoContainer'>
+            <Container className='pokeDexDataTitle'>Pokédex Data</Container>
             <Table striped bordered hover className='pokeDexInfo'>
                 <thead>
                 </thead>
@@ -76,7 +77,7 @@ function PokeDexInfoTable(PokeInfo) {
                     </tr>
                 </tbody>
             </Table>
-        </div>
+        </Container>
     );
 }
 

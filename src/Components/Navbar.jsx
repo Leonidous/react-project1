@@ -16,7 +16,6 @@ import { Link } from 'react-router-dom';
 
 //OLD AND NO LONGER USED, REPLACED WITH BOOTSTRAP NAVBAR
 
-
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
