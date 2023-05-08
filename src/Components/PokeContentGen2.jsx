@@ -10,10 +10,6 @@ import '../App.css';
 
 export default function PokeContentGen2(page) {
 
-    console.log('hello');
-
-    const onMediaFallback = event => event.target.src = fallbackimg;
-
     const CurrentPage = page.page;
     const PerPage = page.pokePerPage;
 

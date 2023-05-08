@@ -22,6 +22,8 @@ export function PokePager() {
       return setPage(value);
     };
 
+    console.log(page);
+    
     //Preserve page state using browser history VVVVVVV
     const history = createBrowserHistory();
 
