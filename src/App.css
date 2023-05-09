@@ -313,3 +313,14 @@
 .pokecard-link:hover {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
+
+.pokepager-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 5px;
+}
+
+.pokepager-container ul{
+  margin-bottom: 5px;
+}
