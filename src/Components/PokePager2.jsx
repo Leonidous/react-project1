@@ -2,6 +2,10 @@ import * as React from 'react';
 import Pagination from 'react-bootstrap/Pagination';
 import Container from 'react-bootstrap/Container';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import PokeContentGen2 from './PokeContentGen2';
 import { createBrowserHistory } from '@remix-run/router';
 import { useEffect } from 'react';
@@ -12,9 +16,34 @@ export default function PokePager() {
 
     const [page, setPage] = React.useState(1);
     const [perPage, setperPage] = React.useState(24);
+    const [error, setError] = React.useState('');
+    const [inputValue, setInputValue] = React.useState('');
 
     const handleClick = (event) => {
         return setPage(Number(event.target.text));
+    };
+
+    const handleChange = (event) => {
+        setInputValue(event.target.value);
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        const parsedValue = parseFloat(inputValue);
+
+        if(isNaN(parsedValue) || !Number.isInteger(parsedValue)){
+            console.log('hello');
+            setError('Please enter a valid whole number.');
+            return;
+        }
+
+        if(parsedValue < 0  || parsedValue > pages){
+            setError(`Please enter a number between 0 and ${pages}.`);
+            return;
+        }
+
+        return setPage(Number(parsedValue));
     };
 
     const handlePrev = () => {
@@ -135,9 +164,24 @@ export default function PokePager() {
         return (
             <>  
                 <Container className='pokepager-container'>
-                        <Pagination>
-                            {pageArray}
-                        </Pagination>
+                    <Row className='d-flex flex-column flex-lg-row justify-content-center align-items-center w-auto mb-1'>
+                        <Col className='w-auto'>
+                            <Pagination className='bootstrap-pagination'>
+                                {pageArray}
+                            </Pagination>
+                        </Col>
+                        <Col className='w-auto align-items-center'>
+                            <Form className='d-flex align-items-center' onSubmit={handleSubmit}>
+                                <Form.Group style={{width: '100px'}} className='me-2'>
+                                    <Form.Control onChange={handleChange} placeholder="Enter Page" />
+                                </Form.Group>
+
+                                <Button variant="primary" type="submit" className='bootstrap-pokebutton'>
+                                    Go
+                                </Button>
+                            </Form>
+                        </Col>
+                    </Row>
                     <Dropdown>
                         <Dropdown.Toggle variant="success" id="dropdown-basic">
                             Select Pokémon Per Page ({perPage})

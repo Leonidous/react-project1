@@ -21,7 +21,7 @@ export default function PokeContentGen2(page) {
             <Container fluid className='poke-cards'>
             <Row xs={1} sm={2} md={4} lg={6}>
                 {pokemons.results.map((pokemon, index) => (
-                    <Col>
+                    <Col key={index} className='pb-3'>
                         <Link to={'/' + pokemon.name} className='pokecard-link'>
                             <Card>
                                 <Card.Img variant='top' src={PokeImage(pokemon.url)} onError={event => {event.target.src = fallbackimg;}}/>

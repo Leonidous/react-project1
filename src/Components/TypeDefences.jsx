@@ -17,8 +17,10 @@ function TypeChart(types) {
   return (
     <Container className='typesTableContainer'>
         <Table striped bordered hover className='typesTable'>
-            <thead style={{textAlign:'center'}}>
-                Type Defence
+            <thead>
+                <tr>
+                    <th className='TypeDefenceTitle' colSpan='9'>Type Defences</th>
+                </tr>
             </thead>
             <tbody>
                 <tr>

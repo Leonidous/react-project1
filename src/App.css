@@ -109,7 +109,6 @@
   text-align: center;
   font-size: large;
   width: 100%;
-  background-color: #6a8a9c;
   font-weight: 700;
 }
 
@@ -323,4 +322,26 @@
 
 .pokepager-container ul{
   margin-bottom: 5px;
+}
+
+#dropdown-basic {
+  --bs-btn-bg: #e4000f;
+  --bs-btn-border-color: #e4000f;
+  --bs-btn-hover-bg: #ca1a26;
+  --bs-btn-hover-border-color: #ca1a26;
+  --bs-btn-active-bg: #e4000f;
+  --bs-btn-active-border-color: #e4000f;
+}
+
+.bootstrap-pagination {
+  --bs-pagination-active-bg: #e4000f;
+  --bs-pagination-active-border-color: #e4000f;
+  --bs-pagination-color: black;
+}
+
+.bootstrap-pokebutton {
+  --bs-btn-bg: #e4000f;
+  --bs-btn-border-color: #e4000f;
+  --bs-btn-hover-bg: #ca1a26;
+  --bs-btn-hover-border-color: #ca1a26;
 }
