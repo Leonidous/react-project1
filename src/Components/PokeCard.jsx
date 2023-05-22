@@ -34,40 +34,21 @@ export function PokeCard() {
     const [MovesInfo] = useArrayFetch(moveEndpoints);
     const [typeInfo] = useArrayFetch(typeEndpoints);
 
-    let pokeStats = {
-        labels: '',
-        datasets: [],
-    }
-
-    const pokeColors = ['#e4000f','#f08030','#f8d030','#6890f0','#78c850','#f85888'];
-    const pokeBorderColors = ['#a60000','#9c531f','#a1871f','#445e9c','#4e8234','#a13959']
-
     let statLabels = [];
 
     if(!(Object.keys(pokemoninfo).length === 0)){
         for(let i in pokemoninfo.stats){
             statLabels[i]=(pokemoninfo.stats[i].stat.name+' ('+pokemoninfo.stats[i].base_stat+')');
         }
-
-        pokeStats = {
-            labels: (statLabels.map((statLabel) => statLabel)),
-            datasets: [
-                {
-                data: pokemoninfo.stats.map((statlist) => statlist.base_stat),
-                backgroundColor: pokeColors.map((color) => color),
-                borderColor: pokeBorderColors.map((color) => color),
-                },
-            ],
-        };
     }
 
     if(!(Object.keys(pokemoninfo).length === 0)){
         console.log(abilityInfo);
         return (
             <>
-                <h1 className='PokeCardTitle'>{pokemoninfo.name}</h1>
-                <Container class id='pokecard-grid'>
-                    <Row>
+                <Container className='pokecard-grid mt-3 border border-5'>
+                    <h1 className='PokeCardTitle pb-0'>{pokemoninfo.name}</h1>
+                    <Row className='px-2'>
                         <Col>
                             <Container className='pokeDataContainer'>
                                 <PokeImgCarousel 
@@ -78,7 +59,7 @@ export function PokeCard() {
                             </Container>
                         </Col>
                     </Row>
-                    <Row>
+                    <Row className='pt-4 px-2'>
                         <Col>
                             <PokeChart2 stats={pokemoninfo.stats}/>
                         </Col>
@@ -86,7 +67,7 @@ export function PokeCard() {
                             <MovesTable Movelist={MovesInfo}/>
                         </Col>
                     </Row>
-                    <Row>
+                    <Row className='pt-4 px-2 pb-4'>
                         <Col>
                             <TypeChart types={typeInfo}/>
                         </Col>

@@ -1,15 +1,12 @@
-#pokecard-grid {
-  border-width: 5px;
-  border-style: solid;
-  border-color: #e4000f;
+.pokecard-grid {
+  border-color: #e4000f !important;
   background-color: rgba(70, 150, 197, 0.562);
-  display: grid;
-  margin: auto;
-  justify-content: center;
-  padding: 20px;
-  row-gap: 20px;
-  column-gap: 20px;
   max-width: 1220px;
+}
+
+.pokedex-container {
+  background-image: url(./Images/lavatile.jpg);
+  background-reapeat: repeat;
 }
 
 .pokeGridItem-1 {

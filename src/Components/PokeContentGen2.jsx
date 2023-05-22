@@ -40,8 +40,6 @@ export default function PokeContentGen2(page) {
 }
 
 function PokeImage(ImageUrl) {
-
-    const id = ImageUrl;
   
     const parts = ImageUrl.split("/");
     const result = parts[parts.length - 2];

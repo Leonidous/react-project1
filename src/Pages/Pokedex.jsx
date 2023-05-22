@@ -6,13 +6,14 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import PokeContentGen2 from './PokeContentGen2';
+import PokeContentGen2 from '../Components/PokeContentGen2';
 import { createBrowserHistory } from '@remix-run/router';
 import { useEffect } from 'react';
 import useFetch from '../Hooks/Pokeapi';
 import qs from 'qs';
+import '../App.css';
 
-export default function PokePager() {
+export default function PokeDex() {
 
     const [page, setPage] = React.useState(1);
     const [perPage, setperPage] = React.useState(24);
@@ -162,7 +163,7 @@ export default function PokePager() {
         )
 
         return (
-            <>  
+            <Container className='pokedex-container'>
                 <Container className='pokepager-container'>
                     <Row className='d-flex flex-column flex-lg-row justify-content-center align-items-center w-auto mb-1'>
                         <Col className='w-auto'>
@@ -195,7 +196,7 @@ export default function PokePager() {
                     </Dropdown>
                 </Container>
                 <PokeContentGen2 page={page} pokePerPage={perPage}/>
-            </>
+            </Container>
         );
     }
 }
