@@ -11,7 +11,6 @@ import { createBrowserHistory } from '@remix-run/router';
 import { useEffect } from 'react';
 import useFetch from '../Hooks/Pokeapi';
 import qs from 'qs';
-import '../App.css';
 
 export default function PokeDex() {
 
@@ -163,39 +162,41 @@ export default function PokeDex() {
         )
 
         return (
-            <Container className='pokedex-container'>
-                <Container className='pokepager-container'>
-                    <Row className='d-flex flex-column flex-lg-row justify-content-center align-items-center w-auto mb-1'>
-                        <Col className='w-auto'>
-                            <Pagination className='bootstrap-pagination'>
-                                {pageArray}
-                            </Pagination>
-                        </Col>
-                        <Col className='w-auto align-items-center'>
-                            <Form className='d-flex align-items-center' onSubmit={handleSubmit}>
-                                <Form.Group style={{width: '100px'}} className='me-2'>
-                                    <Form.Control onChange={handleChange} placeholder="Enter Page" />
-                                </Form.Group>
+            <Container fluid className='pokedex-page pt-3 pb-3'>
+                <Container className='pokedex-container border border-5'>
+                    <Container className='pokepager-container'>
+                        <Row className='d-flex flex-column flex-lg-row justify-content-center align-items-center w-auto mb-1'>
+                            <Col className='w-auto'>
+                                <Pagination className='bootstrap-pagination'>
+                                    {pageArray}
+                                </Pagination>
+                            </Col>
+                            <Col className='w-auto align-items-center'>
+                                <Form className='d-flex align-items-center' onSubmit={handleSubmit}>
+                                    <Form.Group style={{width: '100px'}} className='me-2'>
+                                        <Form.Control onChange={handleChange} placeholder="Enter Page" />
+                                    </Form.Group>
 
-                                <Button variant="primary" type="submit" className='bootstrap-pokebutton'>
-                                    Go
-                                </Button>
-                            </Form>
-                        </Col>
-                    </Row>
-                    <Dropdown>
-                        <Dropdown.Toggle variant="success" id="dropdown-basic">
-                            Select Pokémon Per Page ({perPage})
-                        </Dropdown.Toggle>
+                                    <Button variant="primary" type="submit" className='bootstrap-pokebutton'>
+                                        Go
+                                    </Button>
+                                </Form>
+                            </Col>
+                        </Row>
+                        <Dropdown>
+                            <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                Select Pokémon Per Page ({perPage})
+                            </Dropdown.Toggle>
 
-                        <Dropdown.Menu>
-                            <Dropdown.Item onClick={handlePerPage}>24</Dropdown.Item>
-                            <Dropdown.Item onClick={handlePerPage}>48</Dropdown.Item>
-                            <Dropdown.Item onClick={handlePerPage}>72</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                            <Dropdown.Menu>
+                                <Dropdown.Item onClick={handlePerPage}>24</Dropdown.Item>
+                                <Dropdown.Item onClick={handlePerPage}>48</Dropdown.Item>
+                                <Dropdown.Item onClick={handlePerPage}>72</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </Container>
+                    <PokeContentGen2 page={page} pokePerPage={perPage}/>
                 </Container>
-                <PokeContentGen2 page={page} pokePerPage={perPage}/>
             </Container>
         );
     }

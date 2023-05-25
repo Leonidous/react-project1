@@ -1,6 +1,5 @@
 import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
-import '../App.css'
 
 function MovesTable(Movelist) {
   return (

@@ -1,12 +1,13 @@
 import React from 'react';
 import useFetch from '../Hooks/Pokeapi';
+import { useContext, useEffect} from 'react';
 import fallbackimg from '../Images/FallbackImage.png';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
-import '../App.css';
+import { ThemeContext } from '../Themes/Themecontext';
 
 export default function PokeContentGen2(page) {
 
@@ -15,24 +16,28 @@ export default function PokeContentGen2(page) {
 
     const [pokemons, isLoading, isError] = useFetch('https://pokeapi.co/api/v2/pokemon?limit='+(PerPage)+'&offset='+(((CurrentPage)-1)*PerPage));
 
+    const { theme } = useContext(ThemeContext);
+
+    import(`../Themes/${theme}-theme.css`);
+
     if(pokemons.results){
         return (
           <>
-            <Container fluid className='poke-cards'>
-            <Row xs={1} sm={2} md={4} lg={6}>
-                {pokemons.results.map((pokemon, index) => (
-                    <Col key={index} className='pb-3'>
-                        <Link to={'/' + pokemon.name} className='pokecard-link'>
-                            <Card>
-                                <Card.Img variant='top' src={PokeImage(pokemon.url)} onError={event => {event.target.src = fallbackimg;}}/>
-                                <Card.Body>
-                                    <Card.Title>{pokemon.name}</Card.Title>
-                                </Card.Body>
-                            </Card>
-                        </Link>
-                    </Col>
-                ))}
-            </Row>
+            <Container className='poke-cards'>
+                <Row xs={1} sm={2} md={4} lg={6}>
+                    {pokemons.results.map((pokemon, index) => (
+                        <Col key={index} className='pb-3'>
+                            <Link to={'/' + pokemon.name} className='pokecard-link'>
+                                <Card className='poke-card'>
+                                    <Card.Img variant='top' src={PokeImage(pokemon.url)} onError={event => {event.target.src = fallbackimg;}}/>
+                                    <Card.Body>
+                                        <Card.Title>{pokemon.name}</Card.Title>
+                                    </Card.Body>
+                                </Card>
+                            </Link>
+                        </Col>
+                    ))}
+                </Row>
             </Container>
           </>
         );

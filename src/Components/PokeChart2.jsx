@@ -1,6 +1,5 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container';
-import '../App.css'
 
 export default function PokeChart2(stats) {
     let pokeStats = stats.stats;

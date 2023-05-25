@@ -2,7 +2,6 @@ import Table from 'react-bootstrap/Table';
 import useArrayFetch from '../Hooks/PokeArrayApi';
 import useFetch from '../Hooks/Pokeapi';
 import Container from 'react-bootstrap/Container';
-import '../App.css'
 
 function PokeDexInfoTable(PokeInfo) {
     let PokemonInfo = PokeInfo.PokeInfo;

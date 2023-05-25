@@ -2,7 +2,6 @@ import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import fallbackimg from '../Images/FallbackImage.png'
 import Container from 'react-bootstrap/Container';
-import '../App.css'
 
 export default function PokeImgCarousel(img) {
 

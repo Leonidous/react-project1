@@ -22,23 +22,24 @@ export function PokeSearcher (){
 
     return(
         <>
-            <h1 style={{textAlign: 'center'}}>Search Results for: '{search}'</h1> 
-
-            <Container fluid className='poke-cards'>
-                <Row xs={1} sm={2} md={4} lg={6}>
-                    {pokeSearchResults.map((pokemon, index) => (
-                        <Col key={index} className='pb-3'>
-                            <Link to={'/' + pokemon.name} className='pokecard-link'>
-                                <Card>
-                                    <Card.Img variant='top' src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+(Imageid(pokemon.url))+'.png'} onError={event => {event.target.src = fallbackimg;}}/>
-                                    <Card.Body>
-                                        <Card.Title>{pokemon.name}</Card.Title>
-                                    </Card.Body>
-                                </Card>
-                            </Link>
-                        </Col>
-                    ))}
-                </Row>
+            <Container fluid className='pokedex-page'>
+                <Container className='pokedex-container border-end border-start border-5'>
+                    <h1 className='search-title' style={{textAlign: 'center'}}>Search Results for: '{search}'</h1>
+                    <Row xs={1} sm={2} md={4} lg={6}>
+                        {pokeSearchResults.map((pokemon, index) => (
+                            <Col key={index} className='pb-3'>
+                                <Link to={'/' + pokemon.name} className='pokecard-link'>
+                                    <Card>
+                                        <Card.Img variant='top' src={'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+(Imageid(pokemon.url))+'.png'} onError={event => {event.target.src = fallbackimg;}}/>
+                                        <Card.Body>
+                                            <Card.Title>{pokemon.name}</Card.Title>
+                                        </Card.Body>
+                                    </Card>
+                                </Link>
+                            </Col>
+                        ))}
+                    </Row>
+                </Container>
             </Container>
         </>
     )

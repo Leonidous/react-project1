@@ -8,7 +8,6 @@ import TypeChart from './TypeDefences';
 import PokeDexInfoTable from './PokeDexInfo';
 import PokeChart2 from './PokeChart2';
 import { Container, Row, Col } from 'react-bootstrap';
-import '../App.css';
 
 export function PokeCard() {
     const {pokemon} =  useParams();

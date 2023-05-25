@@ -1,0 +1,102 @@
+.NavBar {
+    background-color: #e4000f;
+}  
+
+.poke-card {
+    background-color: #e4000f;
+}
+
+.pokecard-link {
+    color: inherit;
+}
+  
+.poke-card:hover{
+    background-color: #a83c43;
+    color: #FFFF00;
+}
+
+.pokedex-page {
+    background-image: url(../Images/lavatile.jpg);
+    background-reapeat: repeat;
+}
+
+.pokedex-container {
+    background-color: #8b0000;
+    border-color: #FFFF00 !important;
+}
+
+.pokecard-grid {
+    border-color: #e4000f !important;
+    background-color: rgba(70, 150, 197, 0.562);
+}
+
+.movesTableContainer {
+    background-color: white;
+    border-color: #6a8a9c;
+}
+
+.movesTable {
+    border-color: black;
+}
+
+.typesTableContainer {
+    border-color: #6a8a9c;
+    background-color: white;
+}
+
+.typesTable {
+    border-color: black;
+}
+  
+.typeText {
+    color:black;
+}
+
+.pokeChartContainer {
+    background-color: white;
+    border-color: #6a8a9c;
+}
+
+.pokeDataContainer {
+    background-color: white;
+    border-color: #6a8a9c;
+}
+
+.statsTableDiv {
+    background-color: white;
+    border-color: #6a8a9c;
+}
+
+.statsTable td {
+    border-color: #808080;
+}
+  
+.statsTable th{
+    border-color: #808080;
+}
+
+#dropdown-basic {
+    --bs-btn-bg: #e4000f;
+    --bs-btn-border-color: #e4000f;
+    --bs-btn-hover-bg: #ca1a26;
+    --bs-btn-hover-border-color: #ca1a26;
+    --bs-btn-active-bg: #e4000f;
+    --bs-btn-active-border-color: #e4000f;
+}
+  
+.bootstrap-pagination {
+    --bs-pagination-active-bg: #e4000f;
+    --bs-pagination-active-border-color: #e4000f;
+    --bs-pagination-color: black;
+}
+  
+.bootstrap-pokebutton {
+    --bs-btn-bg: #e4000f;
+    --bs-btn-border-color: #e4000f;
+    --bs-btn-hover-bg: #ca1a26;
+    --bs-btn-hover-border-color: #ca1a26;
+}
+
+.search-title {
+    color: #FFFF00;
+}

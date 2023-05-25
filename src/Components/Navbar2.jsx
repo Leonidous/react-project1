@@ -6,7 +6,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import React from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../App.css';
 
 export default function Navbar2() {
     const [searchTerm, setSearchTerm] = useState('');
