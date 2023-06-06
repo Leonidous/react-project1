@@ -9,6 +9,9 @@ import './App.css';
 
 function App() {
   const [theme, setTheme] = useState('fire');
+
+  import(`./Themes/${theme}-theme.css`);
+
   return (
     <>
       <ThemeProvider theme={theme} setTheme={setTheme}>

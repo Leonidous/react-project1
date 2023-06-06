@@ -1,13 +1,11 @@
 import React from 'react';
 import useFetch from '../Hooks/Pokeapi';
-import { useContext, useEffect} from 'react';
 import fallbackimg from '../Images/FallbackImage.png';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
-import { ThemeContext } from '../Themes/Themecontext';
 
 export default function PokeContentGen2(page) {
 
@@ -15,10 +13,6 @@ export default function PokeContentGen2(page) {
     const PerPage = page.pokePerPage;
 
     const [pokemons, isLoading, isError] = useFetch('https://pokeapi.co/api/v2/pokemon?limit='+(PerPage)+'&offset='+(((CurrentPage)-1)*PerPage));
-
-    const { theme } = useContext(ThemeContext);
-
-    import(`../Themes/${theme}-theme.css`);
 
     if(pokemons.results){
         return (

@@ -33,7 +33,6 @@ export default function PokeDex() {
         const parsedValue = parseFloat(inputValue);
 
         if(isNaN(parsedValue) || !Number.isInteger(parsedValue)){
-            console.log('hello');
             setError('Please enter a valid whole number.');
             return;
         }

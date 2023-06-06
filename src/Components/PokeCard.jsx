@@ -8,6 +8,8 @@ import TypeChart from './TypeDefences';
 import PokeDexInfoTable from './PokeDexInfo';
 import PokeChart2 from './PokeChart2';
 import { Container, Row, Col } from 'react-bootstrap';
+import { ThemeContext } from '../Themes/Themecontext';
+import { useContext} from 'react';
 
 export function PokeCard() {
     const {pokemon} =  useParams();
@@ -29,6 +31,10 @@ export function PokeCard() {
         )
     }
 
+    const { theme } = useContext(ThemeContext);
+
+    import(`../Themes/${theme}-theme.css`);
+
     const [abilityInfo] = useArrayFetch(abilityEndpoints);
     const [MovesInfo] = useArrayFetch(moveEndpoints);
     const [typeInfo] = useArrayFetch(typeEndpoints);
@@ -44,7 +50,7 @@ export function PokeCard() {
     if(!(Object.keys(pokemoninfo).length === 0)){
         console.log(abilityInfo);
         return (
-            <>
+            <Container fluid className='pokecard-page pt-3 pb-3'>
                 <Container className='pokecard-grid mt-3 border border-5'>
                     <h1 className='PokeCardTitle pb-0'>{pokemoninfo.name}</h1>
                     <Row className='px-2'>
@@ -72,7 +78,7 @@ export function PokeCard() {
                         </Col>
                     </Row>
                 </Container>
-            </>
+            </Container>
         )
     }
 

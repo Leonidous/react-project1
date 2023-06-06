@@ -29,6 +29,7 @@ export default function Navbar2() {
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
+            <Button>Fire</Button>
             </Nav>
             <Form onSubmit={handleSearch} className="d-flex">
             <Form.Control
